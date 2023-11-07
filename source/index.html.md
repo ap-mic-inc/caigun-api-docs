@@ -2,10 +2,8 @@
 title: API Reference
 
 language_tabs: # must be one of https://github.com/rouge-ruby/rouge/wiki/List-of-supported-languages-and-lexers
-  - shell
-  - ruby
-  - python
-  - javascript
+  - shell: cURL
+  - python: Python-Request
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -20,12 +18,12 @@ code_clipboard: true
 
 meta:
   - name: description
-    content: Documentation for the Kittn API
+    content: Documentation for the CaiGun API
 ---
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the CaiGun API! You can use our API to access CaiGun API endpoints.
 
 We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
@@ -35,211 +33,132 @@ This example API documentation page was created with [Slate](https://github.com/
 
 > To authorize, use this code:
 
-```ruby
-require 'kittn'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+```shell
+curl "api_endpoint_here" \
+  -H "api-key: CHATBOT_API_KEY"
 ```
 
 ```python
-import kittn
+import requests
 
-api = kittn.authorize('meowmeowmeow')
+url = "api_endpoint_here"
+headers = {
+    "api-key": "CHATBOT_API_KEY"
+}
+
+response = requests.get(url, headers=headers)
 ```
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here" \
-  -H "Authorization: meowmeowmeow"
-```
 
-```javascript
-const kittn = require('kittn');
 
-let api = kittn.authorize('meowmeowmeow');
-```
+> Make sure to replace `CHATBOT_API_KEY` with your API key.
 
-> Make sure to replace `meowmeowmeow` with your API key.
+CaiGun uses API keys to allow access to the API. You can register a new API key at our [developer portal](https://caigun.ap-mic.com).
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+CaiGun API expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+`api-key: CHATBOT_API_KEY`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>CHATBOT_API_KEY</code> with your personal API key.
 </aside>
 
-# Kittens
+# Chatbot
 
-## Get All Kittens
+## Train a Model
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
+```shell
+curl -X 'POST' \
+  'https://caigun-api.ap-mic.com/api/external/chatbot/train' \
+  -H 'accept: application/json' \
+  -H 'api-key: CHATBOT_API_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "text": TEXT,
+  "title": TITLE,
+  "model_name": MODEL_NAME
+}'
 ```
 
 ```python
-import kittn
+import requests
+import json
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+url = "https://caigun-api.ap-mic.com/api/chatbot/train"
 
-```shell
-curl "http://example.com/api/kittens" \
-  -H "Authorization: meowmeowmeow"
-```
+payload = "{\n  \"text\": TEXT,\n  \"title\": TITLE,\n  \"model_name\": MODEL_NAME\n}"
+headers = {
+  'api-key': 'CHATBOT_API_KEY',
+  'Content-Type': 'application/json'
+}
 
-```javascript
-const kittn = require('kittn');
+response = requests.request("POST", url, headers=headers, data=payload)
 
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+print(response.text)
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{
+  "id": "11111111-1111-1111-1111-111111111111"
+}
 ```
-
-This endpoint retrieves all kittens.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`POST https://caigun-api.ap-mic.com/api/external/chatbot/train`
 
-### Query Parameters
+### Request Body
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+Name | Type | Mandatory | Default | Description
+--------- | ------- | ------- | ------- | -----------
+text | string | true || Text for model training.
+title | string | true || Title for the trained model.
+model_name | string | false | "PaLM2" | "PaLM2", "gpt2"
+
+## Get All Models
+
+```shell
+curl "http://caigun-api.ap-mic.com/api/external/chatbot/models" \
+  -H "api-key: CHATBOT_API_KEY"
+```
+
+```python
+import requests
+
+url = "http://caigun-api.ap-mic.com/api/external/chatbot/models"
+headers = {
+    "api-key": "CHATBOT_API_KEY"
+}
+
+response = requests.get(url, headers=headers)
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "models": [
+    {
+      "title": "string",
+      "id": "string",
+      "updated_at": "2023-11-06T09:09:41.552Z",
+      "created_at": "2023-11-06T09:09:41.552Z",
+      "model_name": "PaLM2",
+      "training_data_type": "file"
+    }
+  ]
+}
+```
+
+This endpoint retrieves all models.
+
+### HTTP Request
+
+`GET http://caigun-api.ap-mic.com/api/external/chatbot/models`
 
 <aside class="success">
 Remember — a happy kitten is an authenticated kitten!
 </aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2" \
-  -X DELETE \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
