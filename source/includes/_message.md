@@ -12,11 +12,12 @@ curl --location 'https://caigun-api.ap-mic.com/api/external/chatbot/conversation
 
 ```python
 import requests
+import json
 
-url = "https://caigun-api.ap-mic.com/api/external/chatbot/conversation"
+url = "http://caigun-api.ap-mic.com/api/external/chatbot/conversation"
 
-payload = '{"text": TEXT}'
-headers = {"api-key": CHATBOT_API_KEY, "Content-Type": "application/json"}
+payload = json.dumps({"text": TEXT})
+headers = {"api-key": CHATBOT_API_KEY, "uid": CUSTUM_UID, "Content-Type": "application/json"}
 
 response = requests.request("POST", url, headers=headers, data=payload)
 print(response.json())

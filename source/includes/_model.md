@@ -3,7 +3,7 @@
 ## Train a Model
 
 ```shell
-curl --location 'https://caigun-api.ap-mic.com/api/chatbot/train' \
+curl --location 'https://caigun-api.ap-mic.com/api/external/chatbot/train' \
     --header 'api-key: CHATBOT_API_KEY' \
     --header 'Content-Type: application/json' \
     --data '{"text": TEXT, "title": TITLE, "model_name": MODEL_NAME}'
@@ -11,14 +11,14 @@ curl --location 'https://caigun-api.ap-mic.com/api/chatbot/train' \
 
 ```python
 import requests
+import json
 
-url = "https://caigun-api.ap-mic.com/api/chatbot/train"
+url = "https://caigun-api.ap-mic.com/api/external/chatbot/train"
 
-payload = "{\"text\": TEXT, \"title\": TITLE, \"model_name\": MODEL_NAME}"
-headers = {
-  'api-key': 'CHATBOT_API_KEY',
-  'Content-Type': 'application/json'
-}
+payload = json.dumps(
+    {"text": TEXT, "title": TITLE, "model_name": MODEL_NAME}
+)
+headers = {"api-key": CHATBOT_API_KEY, "Content-Type": "application/json"}
 
 response = requests.request("POST", url, headers=headers, data=payload)
 print(response.json())
@@ -110,11 +110,12 @@ curl --location --request PATCH 'https://caigun-api.ap-mic.com/api/external/chat
 
 ```python
 import requests
+import json
 
 url = "https://caigun-api.ap-mic.com/api/external/chatbot/model_id"
 
-payload = '{"id": MODEL_ID}'
-headers = {"api-key": "CHATBOT_API_KEY", "Content-Type": "application/json"}
+payload = json.dumps({"id": MODEL_ID})
+headers = {"api-key": CHATBOT_API_KEY, "Content-Type": "application/json"}
 
 response = requests.request("PATCH", url, headers=headers, data=payload)
 print(response.json())
