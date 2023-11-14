@@ -30,6 +30,8 @@ print(response.json())
 }
 ```
 
+Send message to chatbot and get response.
+
 ### HTTP Request
 
 `POST https://caigun-api.ap-mic.com/api/external/chatbot/conversation`
@@ -79,7 +81,7 @@ print(response.json())
 }
 ```
 
-This endpoint retrieves all models.
+This endpoint retrieves historical messages from a conversation.
 
 ### HTTP Request
 

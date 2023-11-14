@@ -32,6 +32,8 @@ print(response.json())
 }
 ```
 
+Train a model by text content.
+
 ### HTTP Request
 
 `POST https://caigun-api.ap-mic.com/api/external/chatbot/train`
@@ -44,11 +46,11 @@ print(response.json())
 
 ### Request Body Schema
 
-| Name       | Type   | Mandatory | Default      | Description                  |
-| ---------- | ------ | --------- | ------------ | ---------------------------- |
-| text       | string | true      |              | Text for model training.     |
-| title      | string | true      |              | Title for the trained model. |
-| model_name | string | false     | "chat-bison" | "chat-bison"                 |
+| Name       | Type   | Mandatory | Default      | Description                                                  |
+| ---------- | ------ | --------- | ------------ | ------------------------------------------------------------ |
+| text       | string | true      |              | Text for model training.                                     |
+| title      | string | true      |              | Title for the trained model.                                 |
+| model_name | string | false     | "chat-bison" | "chat-bison", "azure-gpt-3.5-turbo-0613", "azure-gpt-4-0613" |
 
 ## Get All Models
 
