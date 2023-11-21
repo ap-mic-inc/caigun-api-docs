@@ -46,11 +46,11 @@ Train a model by text content.
 
 ### Request Body Schema
 
-| Name       | Type   | Mandatory | Default      | Description                                                  |
-| ---------- | ------ | --------- | ------------ | ------------------------------------------------------------ |
-| text       | string | true      |              | Text for model training.                                     |
-| title      | string | true      |              | Title for the trained model.                                 |
-| model_name | string | false     | "chat-bison" | "chat-bison", "azure-gpt-3.5-turbo-0613", "azure-gpt-4-0613" |
+| Name       | Type   | Mandatory | Default      | Description                       |
+| ---------- | ------ | --------- | ------------ | --------------------------------- |
+| text       | string | true      |              | Text for model training.          |
+| title      | string | true      |              | Title for the trained model.      |
+| model_name | string | false     | "PaLM2"      | "PaLM2", "gpt-3.5-turbo", "gpt-4" |
 
 ## Get All Models
 
