@@ -14,7 +14,7 @@ includes:
   - introduction
   - authentication
   - model
-  - message
+  - conversation
   - errors
 
 search: true
