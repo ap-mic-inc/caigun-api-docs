@@ -1,6 +1,6 @@
 # Errors
 
-The CaiGun API uses the following error codes:
+The CaiGunn API uses the following error codes:
 
 
 Error Code | Meaning

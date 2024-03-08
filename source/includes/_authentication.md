@@ -1,9 +1,9 @@
 # Authentication
 
 
-CaiGun uses API keys to allow access to the API. You can register and create chatbot at [CaiGun](https://caigun.ap-mic.com).
+CaiGunn uses API keys to allow access to the API. You can register and create chatbot at [CaiGunn](https://caigunn.ap-mic.com).
 
-CaiGun API expects for the API key to be included in all API requests to the server in a header that looks like the following:
+CaiGunn API expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
 `api-key: CHATBOT_API_KEY`
 

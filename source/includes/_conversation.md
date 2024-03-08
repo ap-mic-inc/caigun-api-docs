@@ -3,7 +3,7 @@
 ## Conversation With Chatbot
 
 ```shell
-curl --location 'https://caigun-api.ap-mic.com/api/external/chatbot/conversation&nickname=NICKNAME' \
+curl --location 'https://caigunn-api.ap-mic.com/api/external/chatbot/conversation&nickname=NICKNAME' \
     --header 'api-key: CHATBOT_API_KEY' \
     --header 'uid: CUSTUM_UID' \
     --header 'Content-Type: application/json' \
@@ -14,7 +14,7 @@ curl --location 'https://caigun-api.ap-mic.com/api/external/chatbot/conversation
 import requests
 import json
 
-url = "http://caigun-api.ap-mic.com/api/external/chatbot/conversation&nickname=NICKNAME"
+url = "http://caigunn-api.ap-mic.com/api/external/chatbot/conversation&nickname=NICKNAME"
 
 payload = json.dumps({"text": TEXT})
 headers = {"api-key": CHATBOT_API_KEY, "uid": CUSTUM_UID, "Content-Type": "application/json"}
@@ -35,7 +35,7 @@ Send message to chatbot and get response.
 
 ### HTTP Request
 
-`POST https://caigun-api.ap-mic.com/api/external/chatbot/conversation`
+`POST https://caigunn-api.ap-mic.com/api/external/chatbot/conversation`
 
 ### Header Parameters
 
@@ -59,7 +59,7 @@ Send message to chatbot and get response.
 ## Get Historical Messages
 
 ```shell
-curl --location 'https://caigun-api.ap-mic.com/api/external/chatbot/messages?offset=OFFSET&limit=LIMIT&start_at=START_AT&end_at=END_AT&nickname=NICKNAME' \
+curl --location 'https://caigunn-api.ap-mic.com/api/external/chatbot/messages?offset=OFFSET&limit=LIMIT&start_at=START_AT&end_at=END_AT&nickname=NICKNAME' \
     --header 'api-key: CHATBOT_API_KEY' \
     --header 'uid: CUSTUM_UID'
 ```
@@ -67,7 +67,7 @@ curl --location 'https://caigun-api.ap-mic.com/api/external/chatbot/messages?off
 ```python
 import requests
 
-url = "https://caigun-api.ap-mic.com/api/external/chatbot/messages?offset=OFFSET&limit=LIMIT&start_at=START_AT&end_at=END_AT&nickname=NICKNAME"
+url = "https://caigunn-api.ap-mic.com/api/external/chatbot/messages?offset=OFFSET&limit=LIMIT&start_at=START_AT&end_at=END_AT&nickname=NICKNAME"
 
 headers = {"api-key": CHATBOT_API_KEY, "uid": CUSTUM_UID}
 
@@ -98,7 +98,7 @@ This endpoint retrieves historical messages from a conversation.
 
 ### HTTP Request
 
-`GET https://caigun-api.ap-mic.com/api/external/chatbot/messages`
+`GET https://caigunn-api.ap-mic.com/api/external/chatbot/messages`
 
 ### Header Parameters
 
@@ -120,14 +120,14 @@ This endpoint retrieves historical messages from a conversation.
 ## Get Conversation UIDs
 
 ```shell
-curl --location 'https://caigun-api.ap-mic.com/api/external/chatbot/conversation/uids?offset=OFFSET&limit=LIMIT&start_at=START_AT&end_at=END_AT' \
+curl --location 'https://caigunn-api.ap-mic.com/api/external/chatbot/conversation/uids?offset=OFFSET&limit=LIMIT&start_at=START_AT&end_at=END_AT' \
     --header 'api-key: CHATBOT_API_KEY'
 ```
 
 ```python
 import requests
 
-url = "https://caigun-api.ap-mic.com/api/external/chatbot/conversation/uids?offset=OFFSET&limit=LIMIT&start_at=START_AT&end_at=END_AT"
+url = "https://caigunn-api.ap-mic.com/api/external/chatbot/conversation/uids?offset=OFFSET&limit=LIMIT&start_at=START_AT&end_at=END_AT"
 
 headers = {"api-key": CHATBOT_API_KEY, "uid": CUSTUM_UID}
 
@@ -156,7 +156,7 @@ This endpoint retrieves conversation UIDs.
 
 ### HTTP Request
 
-`GET https://caigun-api.ap-mic.com/api/external/chatbot/conversation/uids`
+`GET https://caigunn-api.ap-mic.com/api/external/chatbot/conversation/uids`
 
 ### Header Parameters
 

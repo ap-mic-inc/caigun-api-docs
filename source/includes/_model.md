@@ -3,7 +3,7 @@
 ## Train a Model
 
 ```shell
-curl --location 'https://caigun-api.ap-mic.com/api/external/chatbot/train' \
+curl --location 'https://caigunn-api.ap-mic.com/api/external/chatbot/train' \
     --header 'api-key: CHATBOT_API_KEY' \
     --header 'Content-Type: application/json' \
     --data '{"text": TEXT, "title": TITLE, "model_name": MODEL_NAME}'
@@ -13,7 +13,7 @@ curl --location 'https://caigun-api.ap-mic.com/api/external/chatbot/train' \
 import requests
 import json
 
-url = "https://caigun-api.ap-mic.com/api/external/chatbot/train"
+url = "https://caigunn-api.ap-mic.com/api/external/chatbot/train"
 
 payload = json.dumps(
     {"text": TEXT, "title": TITLE, "model_name": MODEL_NAME}
@@ -36,7 +36,7 @@ Train a model by text content.
 
 ### HTTP Request
 
-`POST https://caigun-api.ap-mic.com/api/external/chatbot/train`
+`POST https://caigunn-api.ap-mic.com/api/external/chatbot/train`
 
 ### Header Parameters
 
@@ -55,14 +55,14 @@ Train a model by text content.
 ## Get All Models
 
 ```shell
-curl --location 'https://caigun-api.ap-mic.com/api/external/chatbot/models' \
+curl --location 'https://caigunn-api.ap-mic.com/api/external/chatbot/models' \
     --header 'api-key: CHATBOT_API_KEY'
 ```
 
 ```python
 import requests
 
-url = "https://caigun-api.ap-mic.com/api/external/chatbot/models"
+url = "https://caigunn-api.ap-mic.com/api/external/chatbot/models"
 
 headers = {"api-key": "CHATBOT_API_KEY"}
 
@@ -91,7 +91,7 @@ This endpoint retrieves all models.
 
 ### HTTP Request
 
-`GET http://caigun-api.ap-mic.com/api/external/chatbot/models`
+`GET http://caigunn-api.ap-mic.com/api/external/chatbot/models`
 
 ### Header Parameters
 
@@ -102,7 +102,7 @@ This endpoint retrieves all models.
 ## Update Chatbot Model
 
 ```shell
-curl --location --request PATCH 'https://caigun-api.ap-mic.com/api/external/chatbot/model_id' \
+curl --location --request PATCH 'https://caigunn-api.ap-mic.com/api/external/chatbot/model_id' \
     --header 'api-key: CHATBOT_API_KEY' \
     --header 'Content-Type: application/json' \
     --data '{"id": MODEL_ID}'
@@ -112,7 +112,7 @@ curl --location --request PATCH 'https://caigun-api.ap-mic.com/api/external/chat
 import requests
 import json
 
-url = "https://caigun-api.ap-mic.com/api/external/chatbot/model_id"
+url = "https://caigunn-api.ap-mic.com/api/external/chatbot/model_id"
 
 payload = json.dumps({"id": MODEL_ID})
 headers = {"api-key": CHATBOT_API_KEY, "Content-Type": "application/json"}
@@ -133,7 +133,7 @@ This endpoint updates the model of chatbot.
 
 ### HTTP Request
 
-`PATCH https://caigun-api.ap-mic.com/api/external/chatbot/model_id`
+`PATCH https://caigunn-api.ap-mic.com/api/external/chatbot/model_id`
 
 ### Header Parameters
 
