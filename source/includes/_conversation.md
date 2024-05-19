@@ -1,9 +1,7 @@
-# Conversation
-
-## Conversation With Chatbot
+## Talk With Chatbot
 
 ```shell
-curl --location 'https://caigunn-api.ap-mic.com/api/external/chatbot/conversation&nickname=NICKNAME' \
+curl --location 'https://caigunn-api.ap-mic.com/api/external/chatbot/talk&nickname=NICKNAME' \
     --header 'api-key: CHATBOT_API_KEY' \
     --header 'uid: CUSTUM_UID' \
     --header 'Content-Type: application/json' \
@@ -14,7 +12,7 @@ curl --location 'https://caigunn-api.ap-mic.com/api/external/chatbot/conversatio
 import requests
 import json
 
-url = "http://caigunn-api.ap-mic.com/api/external/chatbot/conversation&nickname=NICKNAME"
+url = "http://caigunn-api.ap-mic.com/api/external/chatbot/talk&nickname=NICKNAME"
 
 payload = json.dumps({"text": TEXT})
 headers = {"api-key": CHATBOT_API_KEY, "uid": CUSTUM_UID, "Content-Type": "application/json"}
@@ -35,7 +33,7 @@ Send message to chatbot and get response.
 
 ### HTTP Request
 
-`POST https://caigunn-api.ap-mic.com/api/external/chatbot/conversation`
+`POST https://caigunn-api.ap-mic.com/api/external/chatbot/talk`
 
 ### Header Parameters
 
@@ -120,14 +118,14 @@ This endpoint retrieves historical messages from a conversation.
 ## Get Conversation UIDs
 
 ```shell
-curl --location 'https://caigunn-api.ap-mic.com/api/external/chatbot/conversation/uids?offset=OFFSET&limit=LIMIT&start_at=START_AT&end_at=END_AT' \
+curl --location 'https://caigunn-api.ap-mic.com/api/external/chatbot/uids?offset=OFFSET&limit=LIMIT&start_at=START_AT&end_at=END_AT' \
     --header 'api-key: CHATBOT_API_KEY'
 ```
 
 ```python
 import requests
 
-url = "https://caigunn-api.ap-mic.com/api/external/chatbot/conversation/uids?offset=OFFSET&limit=LIMIT&start_at=START_AT&end_at=END_AT"
+url = "https://caigunn-api.ap-mic.com/api/external/chatbot/uids?offset=OFFSET&limit=LIMIT&start_at=START_AT&end_at=END_AT"
 
 headers = {"api-key": CHATBOT_API_KEY, "uid": CUSTUM_UID}
 
@@ -156,7 +154,7 @@ This endpoint retrieves conversation UIDs.
 
 ### HTTP Request
 
-`GET https://caigunn-api.ap-mic.com/api/external/chatbot/conversation/uids`
+`GET https://caigunn-api.ap-mic.com/api/external/chatbot/uids`
 
 ### Header Parameters
 

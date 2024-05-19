@@ -13,8 +13,10 @@ includes:
   - changelog
   - introduction
   - authentication
+  - chatbot
   - model
   - conversation
+  - bind
   - errors
 
 search: true
