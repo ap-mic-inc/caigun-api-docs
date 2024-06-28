@@ -13,6 +13,7 @@ includes:
   - changelog
   - introduction
   - authentication
+  - user
   - chatbot
   - model
   - conversation

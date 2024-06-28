@@ -1,5 +1,11 @@
 # Change Log
 
+## 2024-06-28
+
+- New endpoints
+  - GET /api/external/user/chatbot
+  - POST /api/external/user/chatbot
+
 ## 2024-05-09
 
 - Authentication
