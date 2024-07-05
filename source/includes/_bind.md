@@ -1,3 +1,5 @@
+# Bind Opentalk
+
 ## Bind Opentalk Device
 
 ```shell
@@ -5,7 +7,7 @@ curl --location --request PUT 'https://caigunn-api.ap-mic.com/api/external/chatb
     --header 'api-key: CHATBOT_API_KEY' \
     --header 'caigunn-access-token: CAIGUNN_ACCESS_TOKEN' \
     --header 'Content-Type: application/json' \
-    --data '{"email": OPENTALK_USER_EMAIL, "device_id": OPENTALK_DEVICE_ID}'
+    --data '{"device_id": OPENTALK_DEVICE_ID}'
 ```
 
 ```python
@@ -14,7 +16,7 @@ import json
 
 url = "https://caigunn-api.ap-mic.com/api/external/chatbot/opentalk"
 
-payload = json.dumps({"email": OPENTALK_USER_EMAIL, "device_id": OPENTALK_DEVICE_ID})
+payload = json.dumps({"device_id": OPENTALK_DEVICE_ID})
 headers = {
     "api-key": CHATBOT_API_KEY,
     "caigunn-access-token": CAIGUNN_ACCESS_TOKEN,
@@ -50,11 +52,9 @@ Bind with Opentalk to access device's conversation script, live chat support, an
 
 ### Request Body Schema
 
-| Name      | Type   | Mandatory | Default | Description                 |
-| --------- | ------ | --------- | ------- | --------------------------- |
-| email     | string | true      |         | Email of the Opentalk user. |
-| device_id | string | true      |         | ID of the Opentalk device.  |
-
+| Name      | Type   | Mandatory | Default | Description                |
+| --------- | ------ | --------- | ------- | -------------------------- |
+| device_id | string | true      |         | ID of the Opentalk device. |
 
 ## Unbind Opentalk Device
 
