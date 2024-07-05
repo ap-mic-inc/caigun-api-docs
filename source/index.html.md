@@ -14,10 +14,10 @@ includes:
   - introduction
   - authentication
   - user
-  - chatbot
+  - bind
+  - webhook
   - model
   - conversation
-  - bind
   - errors
 
 search: true

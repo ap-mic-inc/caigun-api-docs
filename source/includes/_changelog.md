@@ -1,5 +1,20 @@
 # Change Log
 
+## 2024-07-05
+
+- New endpoints
+  - GET /api/external/chatbot/model/{model_id}
+  - GET /api/external/user/token/refresh
+  - GET /api/external/user/chatbot/{chatbot_id}
+  - PUT /api/external/user/chatbot/{chatbot_id}
+  - DELETE /api/external/user/chatbot/{chatbot_id}
+  - GET /api/external/user/plan
+- Update endpoints
+  - POST /api/external/chatbot/training_data: response `id` (for text) or `event_id` (crawler, upload file)
+  - PUT /api/external/chatbot/opentalk: remove parameter `email`
+- Remove endpoints
+  - PUT /api/external/chatbot: Use PUT /api/external/user/chatbot/{chatbot_id} instead
+
 ## 2024-06-28
 
 - New endpoints

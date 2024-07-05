@@ -1,6 +1,6 @@
-# Chatbot
+# Webhook
 
-## Create/Update webhook
+## Subscribe Webhook
 
 ```shell
 curl --location --request PUT 'https://caigunn-api.ap-mic.com/api/external/chatbot/webhook' \

@@ -1,3 +1,5 @@
+# Model
+
 ## Create Training Data
 
 ```shell
@@ -71,17 +73,17 @@ print(response.json())
 ```json
 # Create by files
 {
-    "detail": "Creating training data in background"
+    "id": "123e4567-e89b-12d3-a456-426655440000"
 }
 
 # Create by crawler
 {
-    "detail": "Crawling training data in background"
+    "event_id": "123e4567-e89b-12d3-a456-426655440000"
 }
 
 # Create by files
 {
-    "detail": "Create training data successfully"
+    "event_id": "123e4567-e89b-12d3-a456-426655440000"
 }
 
 
@@ -91,7 +93,7 @@ Create training data for model training. Create training data by crawler or uplo
 
 ### HTTP Request
 
-`POST https://caigunn-api.ap-mic.com/api/external/chatbot/models`
+`POST https://caigunn-api.ap-mic.com/api/external/chatbot/training_data`
 
 ### Header Parameters
 
@@ -100,28 +102,36 @@ Create training data for model training. Create training data by crawler or uplo
 | api-key              | string | true      |         | API Key.              |
 | caigunn-access-token | string | true      |         | Caigunn Access Token. |
 
-### Request Body Schema
+### Query Parameters
 
-| Name       | Type   | Mandatory | Default | Description                                                                                     |
-| ---------- | ------ | --------- | ------- | ----------------------------------------------------------------------------------------------- |
-| title      | string | true      |         | Title for the trained model.                                                                    |
-| model_name | string | false     | "PaLM2" | "PaLM2", "gpt-3.5-turbo", "gpt-4", "Gemini", "Claude 2", "Claude 3", "CaiGunn001", "Gemini 1.5" |
+| Name | Type   | Mandatory | Default | Description         |
+| ---- | ------ | --------- | ------- | ------------------- |
+| type | string | true      |         | file, crawler, text |
+
+### Request Body Form data
+
+| Name           | Type   | Mandatory | Default | Description                            |
+| -------------- | ------ | --------- | ------- | -------------------------------------- |
+| website        | string | false     |         | The website for crawling.              |
+| is_single_page | bool   | false     |         | Crawl one webpage or the whole website |
+| text           | string | false     |         |                                        |
+| files          | array  | false     |         |                                        |
 
 ## Train a Model
 
 ```shell
-curl --location 'https://caigunn-api.ap-mic.com/api/external/chatbot/models' \
+curl --location 'https://caigunn-api.ap-mic.com/api/external/chatbot/model' \
     --header 'api-key: CHATBOT_API_KEY' \
     --header 'caigunn-access-token: CAIGUNN_ACCESS_TOKEN' \
     --header 'Content-Type: application/json' \
-    --data '{"text": TEXT, "title": TITLE}'
+    --data '{"title": TITLE, "model_name": MODEL_NAME}'
 ```
 
 ```python
 import requests
 import json
 
-url = "https://caigunn-api.ap-mic.com/api/external/chatbot/models"
+url = "https://caigunn-api.ap-mic.com/api/external/chatbot/model"
 
 payload = json.dumps({"title": TITLE, "model_name": MODEL_NAME})
 headers = {
@@ -147,7 +157,7 @@ Train a model. Result will be sent to the webhook.
 
 ### HTTP Request
 
-`POST https://caigunn-api.ap-mic.com/api/external/chatbot/models`
+`POST https://caigunn-api.ap-mic.com/api/external/chatbot/model`
 
 ### Header Parameters
 
@@ -166,7 +176,7 @@ Train a model. Result will be sent to the webhook.
 ## Get All Models
 
 ```shell
-curl --location 'https://caigunn-api.ap-mic.com/api/external/chatbot/models' \
+curl --location 'https://caigunn-api.ap-mic.com/api/external/chatbot/model' \
     --header 'api-key: CHATBOT_API_KEY' \
     --header 'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'
 ```
@@ -174,7 +184,7 @@ curl --location 'https://caigunn-api.ap-mic.com/api/external/chatbot/models' \
 ```python
 import requests
 
-url = "https://caigunn-api.ap-mic.com/api/external/chatbot/models"
+url = "https://caigunn-api.ap-mic.com/api/external/chatbot/model"
 
 headers = {"api-key": CHATBOT_API_KEY, "caigunn-access-token": CAIGUNN_ACCESS_TOKEN}
 
@@ -204,7 +214,7 @@ This endpoint retrieves all models.
 
 ### HTTP Request
 
-`GET http://caigunn-api.ap-mic.com/api/external/chatbot/models`
+`GET http://caigunn-api.ap-mic.com/api/external/chatbot/model`
 
 ### Header Parameters
 
@@ -213,43 +223,58 @@ This endpoint retrieves all models.
 | api-key              | string | true      |         | API Key.              |
 | caigunn-access-token | string | true      |         | Caigunn Access Token. |
 
-## Update Chatbot Model
+## Get Model
 
 ```shell
-curl --location --request PUT 'https://caigunn-api.ap-mic.com/api/external/chatbot' \
+curl --location 'https://caigunn-api.ap-mic.com/api/external/chatbot/model/MODEL_ID' \
     --header 'api-key: CHATBOT_API_KEY' \
-    --header 'caigunn-access-token: CAIGUNN_ACCESS_TOKEN' \
-    --header 'Content-Type: application/json' \
-    --data '{"model_id": MODEL_ID}'
+    --header 'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'
 ```
 
 ```python
 import requests
-import json
 
-url = "https://caigunn-api.ap-mic.com/api/external/chatbot"
+url = "https://caigunn-api.ap-mic.com/api/external/chatbot/model/MODEL_ID"
 
-payload = json.dumps({"model_id": MODEL_ID})
-headers = {"api-key": CHATBOT_API_KEY, "caigunn-access-token": CAIGUNN_ACCESS_TOKEN, "Content-Type": "application/json"}
+headers = {
+    "api-key": CHATBOT_API_KEY,
+    "caigunn-access-token": CAIGUNN_ACCESS_TOKEN,
+}
 
-response = requests.request("PUT", url, headers=headers, data=payload)
+response = requests.request("GET", url, headers=headers)
+
 print(response.json())
-
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "detail": "Update successfully"
+  "title": "string",
+  "id": "string",
+  "updated_at": "2024-07-05T04:19:04.436Z",
+  "created_at": "2024-07-05T04:19:04.436Z",
+  "model_name": "string",
+  "training_data": [
+    {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "title": "string"
+    }
+  ]
 }
 ```
 
-This endpoint updates the model of chatbot.
+This endpoint retrieves detail information of the chatbot.
 
 ### HTTP Request
 
-`PATCH https://caigunn-api.ap-mic.com/api/external/chatbot`
+`GET https://caigunn-api.ap-mic.com/api/external/chatbot/model/MODEL_ID`
+
+### Path Parameters
+
+| Name     | Type   | Mandatory | Default | Description      |
+| -------- | ------ | --------- | ------- | ---------------- |
+| model-id | string | true      |         | ID of the model. |
 
 ### Header Parameters
 
@@ -257,9 +282,3 @@ This endpoint updates the model of chatbot.
 | -------------------- | ------ | --------- | ------- | --------------------- |
 | api-key              | string | true      |         | API Key.              |
 | caigunn-access-token | string | true      |         | Caigunn Access Token. |
-
-### Request Body Schema
-
-| Name     | Type   | Mandatory | Default | Description |
-| -------- | ------ | --------- | ------- | ----------- |
-| model_id | string | true      |         | Model id.   |
