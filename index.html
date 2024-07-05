@@ -317,6 +317,9 @@
             <a href="#change-log" class="toc-h1 toc-link" data-title="Change Log">Change Log</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#2024-07-05" class="toc-h2 toc-link" data-title="2024-07-05">2024-07-05</a>
+                  </li>
+                  <li>
                     <a href="#2024-06-28" class="toc-h2 toc-link" data-title="2024-06-28">2024-06-28</a>
                   </li>
                   <li>
@@ -340,19 +343,50 @@
             <a href="#user" class="toc-h1 toc-link" data-title="User">User</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-chatbots" class="toc-h2 toc-link" data-title="Get All Chatbots">Get All Chatbots</a>
+                    <a href="#refresh-caigunn-access-token" class="toc-h2 toc-link" data-title="Refresh Caigunn Access Token">Refresh Caigunn Access Token</a>
+                  </li>
+                  <li>
+                    <a href="#get-plans" class="toc-h2 toc-link" data-title="Get Plans">Get Plans</a>
                   </li>
                   <li>
                     <a href="#create-chatbot" class="toc-h2 toc-link" data-title="Create Chatbot">Create Chatbot</a>
                   </li>
+                  <li>
+                    <a href="#get-all-chatbots" class="toc-h2 toc-link" data-title="Get All Chatbots">Get All Chatbots</a>
+                  </li>
+                  <li>
+                    <a href="#get-chatbot-info" class="toc-h2 toc-link" data-title="Get Chatbot Info">Get Chatbot Info</a>
+                  </li>
+                  <li>
+                    <a href="#update-chatbot" class="toc-h2 toc-link" data-title="Update Chatbot">Update Chatbot</a>
+                  </li>
+                  <li>
+                    <a href="#delete-chatbot" class="toc-h2 toc-link" data-title="Delete Chatbot">Delete Chatbot</a>
+                  </li>
               </ul>
           </li>
           <li>
-            <a href="#chatbot" class="toc-h1 toc-link" data-title="Chatbot">Chatbot</a>
+            <a href="#bind-opentalk" class="toc-h1 toc-link" data-title="Bind Opentalk">Bind Opentalk</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#create-update-webhook" class="toc-h2 toc-link" data-title="Create/Update webhook">Create/Update webhook</a>
+                    <a href="#bind-opentalk-device" class="toc-h2 toc-link" data-title="Bind Opentalk Device">Bind Opentalk Device</a>
                   </li>
+                  <li>
+                    <a href="#unbind-opentalk-device" class="toc-h2 toc-link" data-title="Unbind Opentalk Device">Unbind Opentalk Device</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#webhook" class="toc-h1 toc-link" data-title="Webhook">Webhook</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#subscribe-webhook" class="toc-h2 toc-link" data-title="Subscribe Webhook">Subscribe Webhook</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#model" class="toc-h1 toc-link" data-title="Model">Model</a>
+              <ul class="toc-list-h2">
                   <li>
                     <a href="#create-training-data" class="toc-h2 toc-link" data-title="Create Training Data">Create Training Data</a>
                   </li>
@@ -363,22 +397,21 @@
                     <a href="#get-all-models" class="toc-h2 toc-link" data-title="Get All Models">Get All Models</a>
                   </li>
                   <li>
-                    <a href="#update-chatbot-model" class="toc-h2 toc-link" data-title="Update Chatbot Model">Update Chatbot Model</a>
+                    <a href="#get-model" class="toc-h2 toc-link" data-title="Get Model">Get Model</a>
                   </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#conversation" class="toc-h1 toc-link" data-title="Conversation">Conversation</a>
+              <ul class="toc-list-h2">
                   <li>
                     <a href="#talk-with-chatbot" class="toc-h2 toc-link" data-title="Talk With Chatbot">Talk With Chatbot</a>
-                  </li>
-                  <li>
-                    <a href="#get-historical-messages" class="toc-h2 toc-link" data-title="Get Historical Messages">Get Historical Messages</a>
                   </li>
                   <li>
                     <a href="#get-conversation-uids" class="toc-h2 toc-link" data-title="Get Conversation UIDs">Get Conversation UIDs</a>
                   </li>
                   <li>
-                    <a href="#bind-opentalk-device" class="toc-h2 toc-link" data-title="Bind Opentalk Device">Bind Opentalk Device</a>
-                  </li>
-                  <li>
-                    <a href="#unbind-opentalk-device" class="toc-h2 toc-link" data-title="Unbind Opentalk Device">Unbind Opentalk Device</a>
+                    <a href="#get-historical-messages" class="toc-h2 toc-link" data-title="Get Historical Messages">Get Historical Messages</a>
                   </li>
               </ul>
           </li>
@@ -394,7 +427,31 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='change-log'>Change Log</h1><h2 id='2024-06-28'>2024-06-28</h2>
+        <h1 id='change-log'>Change Log</h1><h2 id='2024-07-05'>2024-07-05</h2>
+<ul>
+<li>New endpoints
+
+<ul>
+<li>GET /api/external/chatbot/model/{model_id}</li>
+<li>GET /api/external/user/token/refresh</li>
+<li>GET /api/external/user/chatbot/{chatbot_id}</li>
+<li>PUT /api/external/user/chatbot/{chatbot_id}</li>
+<li>DELETE /api/external/user/chatbot/{chatbot_id}</li>
+<li>GET /api/external/user/plan</li>
+</ul></li>
+<li>Update endpoints
+
+<ul>
+<li>POST /api/external/chatbot/training_data: response <code>id</code> (for text) or <code>event_id</code> (crawler, upload file)</li>
+<li>PUT /api/external/chatbot/opentalk: remove parameter <code>email</code></li>
+</ul></li>
+<li>Remove endpoints
+
+<ul>
+<li>PUT /api/external/chatbot: Use PUT /api/external/user/chatbot/{chatbot_id} instead</li>
+</ul></li>
+</ul>
+<h2 id='2024-06-28'>2024-06-28</h2>
 <ul>
 <li>New endpoints
 
@@ -471,18 +528,13 @@
 <aside class="notice">
 You must replace <code>CHATBOT_API_KEY</code> with your personal chatbot api key and <code>CAIGUNN_ACCESS_TOKEN</code> with your caigunn access token.
 </aside>
-<h1 id='user'>User</h1><h2 id='get-all-chatbots'>Get All Chatbots</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://caigunn-api.ap-mic.com/api/external/user/chatbot?offset=OFFSET&amp;limit=LIMIT'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
+<h1 id='user'>User</h1><h2 id='refresh-caigunn-access-token'>Refresh Caigunn Access Token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap-mic.com/api/external/user/token/refresh?expired_date=EXPIRED_DATE'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/user/chatbot?offset=OFFSET&amp;limit=LIMIT"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/user/token/refresh?expired_date=EXPIRED_DATE"</span>
 
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">,</span>
-    <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
-<span class="p">}</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
@@ -493,18 +545,12 @@ You must replace <code>CHATBOT_API_KEY</code> with your personal chatbot api key
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"chatbots"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Get all chatbots.</p>
+<p>Refresh caigunn-access-token.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://caigunn-api.ap-mic.com/api/external/user/chatbot</code></p>
+<p><code>GET https://caigunn-api.ap-mic.com/api/external/user/token/refresh</code></p>
 <h3 id='header-parameters'>Header Parameters</h3>
 <table><thead>
 <tr>
@@ -534,49 +580,46 @@ You must replace <code>CHATBOT_API_KEY</code> with your personal chatbot api key
 </tr>
 </thead><tbody>
 <tr>
-<td>offset</td>
-<td>integer</td>
+<td>expired_date</td>
+<td>date</td>
 <td>false</td>
-<td>0</td>
 <td></td>
-</tr>
-<tr>
-<td>limit</td>
-<td>integer</td>
-<td>false</td>
-<td>30</td>
 <td></td>
 </tr>
 </tbody></table>
-<h2 id='create-chatbot'>Create Chatbot</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://caigunn-api.ap-mic.com/api/external/user/chatbot?title=TITLE&amp;plan_id=PLAN_ID'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
+<h2 id='get-plans'>Get Plans</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap-mic.com/api/external/user/plan?offset=OFFSET&amp;limit=LIMIT'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/user/chatbot?title=TITLE&amp;plan_id=PLAN_ID"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/user/plan?offset=OFFSET&amp;limit=LIMIT"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">,</span>
-    <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
-
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"expired_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-06-28T09:58:01.364Z"</span><span class="w">
+  </span><span class="nl">"plans"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"crawler_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"character_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"training_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Create Chatbot.</p>
+<p>This endpoint retrieves all plans.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST https://caigunn-api.ap-mic.com/api/external/user/chatbot</code></p>
+<p><code>GET https://caigunn-api.ap-mic.com/api/external/user/plan</code></p>
 <h3 id='header-parameters-2'>Header Parameters</h3>
 <table><thead>
 <tr>
@@ -606,21 +649,623 @@ You must replace <code>CHATBOT_API_KEY</code> with your personal chatbot api key
 </tr>
 </thead><tbody>
 <tr>
+<td>offset</td>
+<td>integer</td>
+<td>false</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>integer</td>
+<td>false</td>
+<td>30</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='create-chatbot'>Create Chatbot</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap-mic.com/api/external/user/chatbot?title=TITLE&amp;plan_id=PLAN_ID'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/user/chatbot?title=TITLE&amp;plan_id=PLAN_ID"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">,</span>
+    <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expired_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-07-05T09:49:32.451Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Create Chatbot.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST https://caigunn-api.ap-mic.com/api/external/user/chatbot</code></p>
+<h3 id='header-parameters-3'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>caigunn-access-token</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>Caigunn Access Token.</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
 <td>title</td>
 <td>string</td>
 <td>true</td>
 <td></td>
-<td>Name of the chatbot.</td>
+<td></td>
 </tr>
 <tr>
 <td>plan_id</td>
 <td>uuid</td>
 <td>true</td>
 <td></td>
-<td>Plan for the chatbot.</td>
+<td></td>
 </tr>
 </tbody></table>
-<h1 id='chatbot'>Chatbot</h1><h2 id='create-update-webhook'>Create/Update webhook</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/webhook'</span> <span class="se">\</span>
+<h2 id='get-all-chatbots'>Get All Chatbots</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap-mic.com/api/external/user/chatbot'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/user/chatbot"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"chatbots"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all chatbots.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://caigunn-api.ap-mic.com/api/external/user/chatbot</code></p>
+<h3 id='header-parameters-4'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>caigunn-access-token</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>Caigunn Access Token.</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>offset</td>
+<td>integer</td>
+<td>false</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>integer</td>
+<td>false</td>
+<td>30</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='get-chatbot-info'>Get Chatbot Info</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap-mic.com/api/external/user/chatbot/CHATBOT_ID'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/user/chatbot/CHATBOT_ID"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-07-05T04:08:48.392Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-07-05T04:08:48.392Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"is_deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"deleted_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-07-05T04:08:48.392Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"prompt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"is_ready_for_train"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"is_shared"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"share_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"is_free"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"training_data_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"file_model_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"crawler_model_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"text_model_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"usage_notification"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"character_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"crawler_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"training_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"plan_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"period_start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-07-05T04:08:48.392Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"period_end_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-07-05T04:08:48.392Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"total_file_size_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"is_api_accessible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"model_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"embedding_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"opentalk_device_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"opentalk_device_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"opentalk_device_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bound_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-07-05T04:08:48.392Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"opentalk_api_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"use_opentalk_conversation"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"opentalk_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"opentalk_user_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"next_plan_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"limits_reset_day"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"coupon"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="nl">"store_source_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"is_prompt_template_accessible"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"qa_generate_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"qa_generate_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"preview_chunks"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"is_chunks_editable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"opentalk_host"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"webhook_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves detail information of the chatbot.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://caigunn-api.ap-mic.com/api/external/user/chatbot/CHATBOT_ID</code></p>
+<h3 id='path-parameters'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>chatbot-id</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>The ID of chatbot.</td>
+</tr>
+</tbody></table>
+<h3 id='header-parameters-5'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>caigunn-access-token</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>Caigunn Access Token.</td>
+</tr>
+</tbody></table>
+<h2 id='update-chatbot'>Update Chatbot</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://caigunn-api.ap-mic.com/api/external/user/chatbot/CHATBOT_ID'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{"webhook_url": WEBHOOK_URL}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/user/chatbot/CHATBOT_ID"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span><span class="s">"webhook_url"</span><span class="p">:</span> <span class="n">WEBHOOK_URL</span><span class="p">})</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">,</span>
+    <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"update successfully"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Update chatbot settings</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>PUT https://caigunn-api.ap-mic.com/api/external/chatbot/webhook</code></p>
+<h3 id='header-parameters-6'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>api-key</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>API Key.</td>
+</tr>
+<tr>
+<td>caigunn-access-token</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>Caigunn Access Token.</td>
+</tr>
+</tbody></table>
+<h3 id='request-body-form-data'>Request Body Form data</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>false</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>avatar</td>
+<td>file</td>
+<td>false</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>main_color</td>
+<td>string</td>
+<td>false</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>is_default_visible</td>
+<td>boolean</td>
+<td>false</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>button_style</td>
+<td>string</td>
+<td>false</td>
+<td></td>
+<td>basic, image</td>
+</tr>
+<tr>
+<td>button_image</td>
+<td>file</td>
+<td>false</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>initial_messages</td>
+<td>array</td>
+<td>false</td>
+<td></td>
+<td>[{&quot;type&quot;:&quot;text&quot;,&quot;value&quot;:&quot;string&quot;}]</td>
+</tr>
+<tr>
+<td>is_fixed</td>
+<td>bool</td>
+<td>false</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>show_history</td>
+<td>boolean</td>
+<td>false</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>allowed_domains</td>
+<td>array</td>
+<td>false</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>model_id</td>
+<td>uuid</td>
+<td>false</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>prompt</td>
+<td>string</td>
+<td>false</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>is_shared</td>
+<td>boolean</td>
+<td>false</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='delete-chatbot'>Delete Chatbot</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>shell curl <span class="nt">--location</span> <span class="nt">--request</span> DELETE <span class="s1">'https://caigunn-api.ap-mic.com/api/external/user/chatbot/CHATBOT_ID'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/user/chatbot/CHATBOT_ID"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"DELETE"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delete chatbot successfully"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Delete Chatbot.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>DELETE https://caigunn-api.ap-mic.com/api/external/user/chatbot/CHATBOT_ID</code></p>
+<h3 id='path-parameters-2'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>chatbot-id</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>The ID of chatbot.</td>
+</tr>
+</tbody></table>
+<h3 id='header-parameters-7'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>caigunn-access-token</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>Caigunn Access Token.</td>
+</tr>
+</tbody></table>
+<h1 id='bind-opentalk'>Bind Opentalk</h1><h2 id='bind-opentalk-device'>Bind Opentalk Device</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/opentalk'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'api-key: CHATBOT_API_KEY'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{"device_id": OPENTALK_DEVICE_ID}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/chatbot/opentalk"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span><span class="s">"device_id"</span><span class="p">:</span> <span class="n">OPENTALK_DEVICE_ID</span><span class="p">})</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"api-key"</span><span class="p">:</span> <span class="n">CHATBOT_API_KEY</span><span class="p">,</span>
+    <span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">,</span>
+    <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bind Opentalk successfully"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Bind with Opentalk to access device&#39;s conversation script, live chat support, and analytics features.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>PUT https://caigunn-api.ap-mic.com/api/external/chatbot/opentalk</code></p>
+<h3 id='header-parameters'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>api-key</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>API Key.</td>
+</tr>
+<tr>
+<td>caigunn-access-token</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>Caigunn Access Token.</td>
+</tr>
+</tbody></table>
+<h3 id='request-body-schema'>Request Body Schema</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>device_id</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>ID of the Opentalk device.</td>
+</tr>
+</tbody></table>
+<h2 id='unbind-opentalk-device'>Unbind Opentalk Device</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> DELETE <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/opentalk'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'api-key: CHATBOT_API_KEY'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/chatbot/opentalk"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"api-key"</span><span class="p">:</span> <span class="n">CHATBOT_API_KEY</span><span class="p">,</span>
+    <span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">,</span>
+    <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"DELETE"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unbind Opentalk successfully"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Unbind Opentalk device.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>DELETE https://caigunn-api.ap-mic.com/api/external/chatbot/opentalk</code></p>
+<h3 id='header-parameters-2'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>api-key</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>API Key.</td>
+</tr>
+<tr>
+<td>caigunn-access-token</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>Caigunn Access Token.</td>
+</tr>
+</tbody></table>
+<h1 id='webhook'>Webhook</h1><h2 id='subscribe-webhook'>Subscribe Webhook</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/webhook'</span> <span class="se">\</span>
     <span class="nt">--header</span> <span class="s1">'api-key: CHATBOT_API_KEY'</span> <span class="se">\</span>
     <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span> <span class="se">\</span>
     <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
@@ -695,7 +1340,7 @@ You must replace <code>CHATBOT_API_KEY</code> with your personal chatbot api key
 <td>Webhook url for chatbot event subscripiton.</td>
 </tr>
 </tbody></table>
-<h2 id='create-training-data'>Create Training Data</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Create by files</span>
+<h1 id='model'>Model</h1><h2 id='create-training-data'>Create Training Data</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Create by files</span>
 curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/training_data?type=file'</span> <span class="se">\</span>
     <span class="nt">--header</span> <span class="s1">'api-key: CHATBOT_API_KEY'</span> <span class="se">\</span>
     <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span> <span class="se">\</span>
@@ -761,25 +1406,138 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">Create</span><span class="w"> </span><span class="err">by</span><span class="w"> </span><span class="err">files</span><span class="w">
 </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Creating training data in background"</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123e4567-e89b-12d3-a456-426655440000"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="err">#</span><span class="w"> </span><span class="err">Create</span><span class="w"> </span><span class="err">by</span><span class="w"> </span><span class="err">crawler</span><span class="w">
 </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Crawling training data in background"</span><span class="w">
+    </span><span class="nl">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123e4567-e89b-12d3-a456-426655440000"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="err">#</span><span class="w"> </span><span class="err">Create</span><span class="w"> </span><span class="err">by</span><span class="w"> </span><span class="err">files</span><span class="w">
 </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create training data successfully"</span><span class="w">
+    </span><span class="nl">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123e4567-e89b-12d3-a456-426655440000"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 
 </span></code></pre></div>
 <p>Create training data for model training. Create training data by crawler or uploading files will be processed in background and the result will be sent to the webhook.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://caigunn-api.ap-mic.com/api/external/chatbot/models</code></p>
+<p><code>POST https://caigunn-api.ap-mic.com/api/external/chatbot/training_data</code></p>
 <h3 id='header-parameters'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>api-key</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>API Key.</td>
+</tr>
+<tr>
+<td>caigunn-access-token</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>Caigunn Access Token.</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>file, crawler, text</td>
+</tr>
+</tbody></table>
+<h3 id='request-body-form-data'>Request Body Form data</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>website</td>
+<td>string</td>
+<td>false</td>
+<td></td>
+<td>The website for crawling.</td>
+</tr>
+<tr>
+<td>is_single_page</td>
+<td>bool</td>
+<td>false</td>
+<td></td>
+<td>Crawl one webpage or the whole website</td>
+</tr>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>false</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>files</td>
+<td>array</td>
+<td>false</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='train-a-model'>Train a Model</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/model'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'api-key: CHATBOT_API_KEY'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+    <span class="nt">--data</span> <span class="s1">'{"title": TITLE, "model_name": MODEL_NAME}'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/chatbot/model"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span><span class="s">"title"</span><span class="p">:</span> <span class="n">TITLE</span><span class="p">,</span> <span class="s">"model_name"</span><span class="p">:</span> <span class="n">MODEL_NAME</span><span class="p">})</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"api-key"</span><span class="p">:</span> <span class="n">CHATBOT_API_KEY</span><span class="p">,</span>
+    <span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">,</span>
+    <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Training in background"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Train a model. Result will be sent to the webhook.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://caigunn-api.ap-mic.com/api/external/chatbot/model</code></p>
+<h3 id='header-parameters-2'>Header Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -829,93 +1587,12 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 <td>&quot;PaLM2&quot;, &quot;gpt-3.5-turbo&quot;, &quot;gpt-4&quot;, &quot;Gemini&quot;, &quot;Claude 2&quot;, &quot;Claude 3&quot;, &quot;CaiGunn001&quot;, &quot;Gemini 1.5&quot;</td>
 </tr>
 </tbody></table>
-<h2 id='train-a-model'>Train a Model</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/models'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'api-key: CHATBOT_API_KEY'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-    <span class="nt">--data</span> <span class="s1">'{"text": TEXT, "title": TITLE}'</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">json</span>
-
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/chatbot/models"</span>
-
-<span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span><span class="s">"title"</span><span class="p">:</span> <span class="n">TITLE</span><span class="p">,</span> <span class="s">"model_name"</span><span class="p">:</span> <span class="n">MODEL_NAME</span><span class="p">})</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">"api-key"</span><span class="p">:</span> <span class="n">CHATBOT_API_KEY</span><span class="p">,</span>
-    <span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">,</span>
-    <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
-<span class="p">}</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
-
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Training in background"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Train a model. Result will be sent to the webhook.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST https://caigunn-api.ap-mic.com/api/external/chatbot/models</code></p>
-<h3 id='header-parameters-2'>Header Parameters</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Mandatory</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>api-key</td>
-<td>string</td>
-<td>true</td>
-<td></td>
-<td>API Key.</td>
-</tr>
-<tr>
-<td>caigunn-access-token</td>
-<td>string</td>
-<td>true</td>
-<td></td>
-<td>Caigunn Access Token.</td>
-</tr>
-</tbody></table>
-<h3 id='request-body-schema-2'>Request Body Schema</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Mandatory</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>title</td>
-<td>string</td>
-<td>true</td>
-<td></td>
-<td>Title for the trained model.</td>
-</tr>
-<tr>
-<td>model_name</td>
-<td>string</td>
-<td>false</td>
-<td>&quot;PaLM2&quot;</td>
-<td>&quot;PaLM2&quot;, &quot;gpt-3.5-turbo&quot;, &quot;gpt-4&quot;, &quot;Gemini&quot;, &quot;Claude 2&quot;, &quot;Claude 3&quot;, &quot;CaiGunn001&quot;, &quot;Gemini 1.5&quot;</td>
-</tr>
-</tbody></table>
-<h2 id='get-all-models'>Get All Models</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/models'</span> <span class="se">\</span>
+<h2 id='get-all-models'>Get All Models</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/model'</span> <span class="se">\</span>
     <span class="nt">--header</span> <span class="s1">'api-key: CHATBOT_API_KEY'</span> <span class="se">\</span>
     <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/chatbot/models"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/chatbot/model"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">"api-key"</span><span class="p">:</span> <span class="n">CHATBOT_API_KEY</span><span class="p">,</span> <span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">}</span>
 
@@ -941,7 +1618,7 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 </span></code></pre></div>
 <p>This endpoint retrieves all models.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET http://caigunn-api.ap-mic.com/api/external/chatbot/models</code></p>
+<p><code>GET http://caigunn-api.ap-mic.com/api/external/chatbot/model</code></p>
 <h3 id='header-parameters-3'>Header Parameters</h3>
 <table><thead>
 <tr>
@@ -967,33 +1644,60 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 <td>Caigunn Access Token.</td>
 </tr>
 </tbody></table>
-<h2 id='update-chatbot-model'>Update Chatbot Model</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot'</span> <span class="se">\</span>
+<h2 id='get-model'>Get Model</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/model/MODEL_ID'</span> <span class="se">\</span>
     <span class="nt">--header</span> <span class="s1">'api-key: CHATBOT_API_KEY'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-    <span class="nt">--data</span> <span class="s1">'{"model_id": MODEL_ID}'</span>
+    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/chatbot"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/chatbot/model/MODEL_ID"</span>
 
-<span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span><span class="s">"model_id"</span><span class="p">:</span> <span class="n">MODEL_ID</span><span class="p">})</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">"api-key"</span><span class="p">:</span> <span class="n">CHATBOT_API_KEY</span><span class="p">,</span> <span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">,</span> <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">}</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"api-key"</span><span class="p">:</span> <span class="n">CHATBOT_API_KEY</span><span class="p">,</span>
+    <span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">,</span>
+<span class="p">}</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
-
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Update successfully"</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-07-05T04:19:04.436Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-07-05T04:19:04.436Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"training_data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint updates the model of chatbot.</p>
+<p>This endpoint retrieves detail information of the chatbot.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>PATCH https://caigunn-api.ap-mic.com/api/external/chatbot</code></p>
+<p><code>GET https://caigunn-api.ap-mic.com/api/external/chatbot/model/MODEL_ID</code></p>
+<h3 id='path-parameters'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>model-id</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>ID of the model.</td>
+</tr>
+</tbody></table>
 <h3 id='header-parameters-4'>Header Parameters</h3>
 <table><thead>
 <tr>
@@ -1019,26 +1723,9 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 <td>Caigunn Access Token.</td>
 </tr>
 </tbody></table>
-<h3 id='request-body-schema-3'>Request Body Schema</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Mandatory</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>model_id</td>
-<td>string</td>
-<td>true</td>
-<td></td>
-<td>Model id.</td>
-</tr>
-</tbody></table>
-<h2 id='talk-with-chatbot'>Talk With Chatbot</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/talk&amp;nickname=NICKNAME'</span> <span class="se">\</span>
+<h1 id='conversation'>Conversation</h1><h2 id='talk-with-chatbot'>Talk With Chatbot</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/talk&amp;nickname=NICKNAME'</span> <span class="se">\</span>
     <span class="nt">--header</span> <span class="s1">'api-key: CHATBOT_API_KEY'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span> <span class="se">\</span>
     <span class="nt">--header</span> <span class="s1">'uid: CUSTUM_UID'</span> <span class="se">\</span>
     <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
     <span class="nt">--data</span> <span class="s1">'{"text": TEXT}'</span>
@@ -1048,10 +1735,16 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 <span class="n">url</span> <span class="o">=</span> <span class="s">"http://caigunn-api.ap-mic.com/api/external/chatbot/talk&amp;nickname=NICKNAME"</span>
 
 <span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span><span class="s">"text"</span><span class="p">:</span> <span class="n">TEXT</span><span class="p">})</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">"api-key"</span><span class="p">:</span> <span class="n">CHATBOT_API_KEY</span><span class="p">,</span> <span class="s">"uid"</span><span class="p">:</span> <span class="n">CUSTUM_UID</span><span class="p">,</span> <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">}</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"api-key"</span><span class="p">:</span> <span class="n">CHATBOT_API_KEY</span><span class="p">,</span>
+    <span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">,</span>
+    <span class="s">"uid"</span><span class="p">:</span> <span class="n">CUSTUM_UID</span><span class="p">,</span>
+    <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
+<span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1079,6 +1772,13 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 <td>true</td>
 <td></td>
 <td>API Key.</td>
+</tr>
+<tr>
+<td>caigunn-access-token</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>Caigunn Access Token.</td>
 </tr>
 <tr>
 <td>uid</td>
@@ -1124,14 +1824,118 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 <td>Message from the conversation participant.</td>
 </tr>
 </tbody></table>
+<h2 id='get-conversation-uids'>Get Conversation UIDs</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/uids?offset=OFFSET&amp;limit=LIMIT&amp;start_at=START_AT&amp;end_at=END_AT'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'api-key: CHATBOT_API_KEY'</span>
+    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/chatbot/uids?offset=OFFSET&amp;limit=LIMIT&amp;start_at=START_AT&amp;end_at=END_AT"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"api-key"</span><span class="p">:</span> <span class="n">CHATBOT_API_KEY</span><span class="p">,</span>
+    <span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">,</span>
+    <span class="s">"uid"</span><span class="p">:</span> <span class="n">CUSTUM_UID</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"uids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_sent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_sent_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves conversation UIDs.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://caigunn-api.ap-mic.com/api/external/chatbot/uids</code></p>
+<h3 id='header-parameters-2'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>api-key</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>API Key.</td>
+</tr>
+<tr>
+<td>caigunn-access-token</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>Caigunn Access Token.</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>offset</td>
+<td>integer</td>
+<td>false</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>integer</td>
+<td>false</td>
+<td>30</td>
+<td></td>
+</tr>
+<tr>
+<td>start_at</td>
+<td>datetime</td>
+<td>false</td>
+<td>1970-1-1</td>
+<td>Get UIDs where last_sent_at is greater than or equal start_at.</td>
+</tr>
+<tr>
+<td>end_at</td>
+<td>datetime</td>
+<td>false</td>
+<td>current datetime</td>
+<td>Get UIDs where last_sent_at is less than or equal end_at.</td>
+</tr>
+</tbody></table>
 <h2 id='get-historical-messages'>Get Historical Messages</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/messages?offset=OFFSET&amp;limit=LIMIT&amp;start_at=START_AT&amp;end_at=END_AT&amp;nickname=NICKNAME'</span> <span class="se">\</span>
     <span class="nt">--header</span> <span class="s1">'api-key: CHATBOT_API_KEY'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span> <span class="se">\</span>
     <span class="nt">--header</span> <span class="s1">'uid: CUSTUM_UID'</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/chatbot/messages?offset=OFFSET&amp;limit=LIMIT&amp;start_at=START_AT&amp;end_at=END_AT&amp;nickname=NICKNAME"</span>
 
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">"api-key"</span><span class="p">:</span> <span class="n">CHATBOT_API_KEY</span><span class="p">,</span> <span class="s">"uid"</span><span class="p">:</span> <span class="n">CUSTUM_UID</span><span class="p">}</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"api-key"</span><span class="p">:</span> <span class="n">CHATBOT_API_KEY</span><span class="p">,</span>
+    <span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">,</span>
+    <span class="s">"uid"</span><span class="p">:</span> <span class="n">CUSTUM_UID</span><span class="p">,</span>
+<span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
@@ -1155,9 +1959,9 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves historical messages from a conversation.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://caigunn-api.ap-mic.com/api/external/chatbot/messages</code></p>
-<h3 id='header-parameters-2'>Header Parameters</h3>
+<h3 id='header-parameters-3'>Header Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1175,6 +1979,13 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 <td>API Key.</td>
 </tr>
 <tr>
+<td>caigunn-access-token</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>Caigunn Access Token.</td>
+</tr>
+<tr>
 <td>uid</td>
 <td>string</td>
 <td>true</td>
@@ -1182,7 +1993,7 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 <td>Custom UID for identify conversation.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-2'>Query Parameters</h3>
+<h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1226,230 +2037,6 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 <td>false</td>
 <td></td>
 <td>Nickname of the conversation participant.</td>
-</tr>
-</tbody></table>
-<h2 id='get-conversation-uids'>Get Conversation UIDs</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/uids?offset=OFFSET&amp;limit=LIMIT&amp;start_at=START_AT&amp;end_at=END_AT'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'api-key: CHATBOT_API_KEY'</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/chatbot/uids?offset=OFFSET&amp;limit=LIMIT&amp;start_at=START_AT&amp;end_at=END_AT"</span>
-
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">"api-key"</span><span class="p">:</span> <span class="n">CHATBOT_API_KEY</span><span class="p">,</span> <span class="s">"uid"</span><span class="p">:</span> <span class="n">CUSTUM_UID</span><span class="p">}</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"uids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"last_sent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"last_sent_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves conversation UIDs.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://caigunn-api.ap-mic.com/api/external/chatbot/uids</code></p>
-<h3 id='header-parameters-3'>Header Parameters</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Mandatory</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>api-key</td>
-<td>string</td>
-<td>true</td>
-<td></td>
-<td>API Key.</td>
-</tr>
-</tbody></table>
-<h3 id='query-parameters-3'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Mandatory</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>offset</td>
-<td>integer</td>
-<td>false</td>
-<td>0</td>
-<td></td>
-</tr>
-<tr>
-<td>limit</td>
-<td>integer</td>
-<td>false</td>
-<td>30</td>
-<td></td>
-</tr>
-<tr>
-<td>start_at</td>
-<td>datetime</td>
-<td>false</td>
-<td>1970-1-1</td>
-<td>Get UIDs where last_sent_at is greater than or equal start_at.</td>
-</tr>
-<tr>
-<td>end_at</td>
-<td>datetime</td>
-<td>false</td>
-<td>current datetime</td>
-<td>Get UIDs where last_sent_at is less than or equal end_at.</td>
-</tr>
-</tbody></table>
-<h2 id='bind-opentalk-device'>Bind Opentalk Device</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PUT <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/opentalk'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'api-key: CHATBOT_API_KEY'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-    <span class="nt">--data</span> <span class="s1">'{"email": OPENTALK_USER_EMAIL, "device_id": OPENTALK_DEVICE_ID}'</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">json</span>
-
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/chatbot/opentalk"</span>
-
-<span class="n">payload</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">({</span><span class="s">"email"</span><span class="p">:</span> <span class="n">OPENTALK_USER_EMAIL</span><span class="p">,</span> <span class="s">"device_id"</span><span class="p">:</span> <span class="n">OPENTALK_DEVICE_ID</span><span class="p">})</span>
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">"api-key"</span><span class="p">:</span> <span class="n">CHATBOT_API_KEY</span><span class="p">,</span>
-    <span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">,</span>
-    <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
-<span class="p">}</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"PUT"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
-
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bind Opentalk successfully"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Bind with Opentalk to access device&#39;s conversation script, live chat support, and analytics features.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>PUT https://caigunn-api.ap-mic.com/api/external/chatbot/opentalk</code></p>
-<h3 id='header-parameters'>Header Parameters</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Mandatory</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>api-key</td>
-<td>string</td>
-<td>true</td>
-<td></td>
-<td>API Key.</td>
-</tr>
-<tr>
-<td>caigunn-access-token</td>
-<td>string</td>
-<td>true</td>
-<td></td>
-<td>Caigunn Access Token.</td>
-</tr>
-</tbody></table>
-<h3 id='request-body-schema'>Request Body Schema</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Mandatory</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>email</td>
-<td>string</td>
-<td>true</td>
-<td></td>
-<td>Email of the Opentalk user.</td>
-</tr>
-<tr>
-<td>device_id</td>
-<td>string</td>
-<td>true</td>
-<td></td>
-<td>ID of the Opentalk device.</td>
-</tr>
-</tbody></table>
-<h2 id='unbind-opentalk-device'>Unbind Opentalk Device</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> DELETE <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/opentalk'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'api-key: CHATBOT_API_KEY'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span> <span class="se">\</span>
-    <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">json</span>
-
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/chatbot/opentalk"</span>
-
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">"api-key"</span><span class="p">:</span> <span class="n">CHATBOT_API_KEY</span><span class="p">,</span>
-    <span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">,</span>
-    <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span>
-<span class="p">}</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"DELETE"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
-
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unbind Opentalk successfully"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Unbind Opentalk device.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>DELETE https://caigunn-api.ap-mic.com/api/external/chatbot/opentalk</code></p>
-<h3 id='header-parameters-2'>Header Parameters</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Mandatory</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>api-key</td>
-<td>string</td>
-<td>true</td>
-<td></td>
-<td>API Key.</td>
-</tr>
-<tr>
-<td>caigunn-access-token</td>
-<td>string</td>
-<td>true</td>
-<td></td>
-<td>Caigunn Access Token.</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
