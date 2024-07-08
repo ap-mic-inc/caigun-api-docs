@@ -56,3 +56,124 @@ Set webhook url to subscribe chatbot events.
 | ----------- | ------ | --------- | ------- | ------------------------------------------- |
 | webhook_url | string | true      |         | Webhook url for chatbot event subscripiton. |
 
+# Webhook Events
+
+## crawling.initial
+
+```json
+{
+  "event": "crawling",
+  "status": "initial",
+  "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "event_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+```
+
+## crawling.completed
+
+```json
+{
+  "event": "crawling",
+  "status": "completed",
+  "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "event_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "data": {
+    "training_data_ids": [
+      "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+    ]
+  }
+}
+```
+
+## uploading.initial
+
+```json
+{
+  "event": "uploading",
+  "status": "initial",
+  "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "event_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+```
+
+## uploading.completed
+
+```json
+{
+  "event": "uploading",
+  "status": "completed",
+  "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "event_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "data": {
+    "training_data_ids": [
+      {
+        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "filename": "filename"
+      },
+      {
+        "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "filename": "filename",
+        "status": "failed",
+        "detail": "Unsupport file format"
+      }
+    ]
+  }
+}
+```
+
+## uploading.failed
+
+```json
+{
+  "event": "uploading",
+  "status": "failed",
+  "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "event_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+```
+
+## training.initial
+
+```json
+{
+  "event": "training",
+  "status": "initial",
+  "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+```
+
+## training.completed
+
+```json
+{
+  "event": "training",
+  "status": "completed",
+  "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "data": {
+    "model_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "training_data_ids": [
+      "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+    ]
+  }
+}
+```
+
+## training.failed
+
+| Detail                   |
+| ------------------------ |
+| Training data not found  |
+| Character limit exceeded |
+
+```json
+{
+  "event": "training",
+  "status": "failed",
+  "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "detail": ""
+}
+```

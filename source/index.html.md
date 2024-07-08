@@ -15,9 +15,9 @@ includes:
   - authentication
   - user
   - bind
-  - webhook
   - model
   - conversation
+  - webhook
   - errors
 
 search: true
