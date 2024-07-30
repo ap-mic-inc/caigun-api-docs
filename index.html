@@ -317,6 +317,9 @@
             <a href="#change-log" class="toc-h1 toc-link" data-title="Change Log">Change Log</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#2024-07-30" class="toc-h2 toc-link" data-title="2024-07-30">2024-07-30</a>
+                  </li>
+                  <li>
                     <a href="#2024-07-05" class="toc-h2 toc-link" data-title="2024-07-05">2024-07-05</a>
                   </li>
                   <li>
@@ -383,6 +386,12 @@
                     <a href="#create-training-data" class="toc-h2 toc-link" data-title="Create Training Data">Create Training Data</a>
                   </li>
                   <li>
+                    <a href="#get-training-data" class="toc-h2 toc-link" data-title="Get Training Data">Get Training Data</a>
+                  </li>
+                  <li>
+                    <a href="#delete-training-data" class="toc-h2 toc-link" data-title="Delete Training Data">Delete Training Data</a>
+                  </li>
+                  <li>
                     <a href="#train-a-model" class="toc-h2 toc-link" data-title="Train a Model">Train a Model</a>
                   </li>
                   <li>
@@ -412,6 +421,12 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#subscribe-webhook" class="toc-h2 toc-link" data-title="Subscribe Webhook">Subscribe Webhook</a>
+                  </li>
+                  <li>
+                    <a href="#unsubscribe-webhook" class="toc-h2 toc-link" data-title="Unsubscribe Webhook">Unsubscribe Webhook</a>
+                  </li>
+                  <li>
+                    <a href="#get-events-by-event-id" class="toc-h2 toc-link" data-title="Get Events by Event ID">Get Events by Event ID</a>
                   </li>
               </ul>
           </li>
@@ -456,7 +471,25 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='change-log'>Change Log</h1><h2 id='2024-07-05'>2024-07-05</h2>
+        <h1 id='change-log'>Change Log</h1><h2 id='2024-07-30'>2024-07-30</h2>
+<ul>
+<li>New endpoints
+
+<ul>
+<li>DELETE /api/external/chatbot/webhook</li>
+<li>DELETE /api/external/chatbot/training_data/{training_data_id}</li>
+<li>GET /api/external/chatbot/training_data</li>
+<li>GET /api/external/chatbot/event/{event_id}</li>
+</ul></li>
+<li>Update endpoints
+
+<ul>
+<li>POST /api/external/chatbot/training_data: response <code>id</code> and <code>event_id</code></li>
+<li>POST /api/external/chatbot/model: response <code>event_id</code></li>
+</ul></li>
+<li>Update webhook messages</li>
+</ul>
+<h2 id='2024-07-05'>2024-07-05</h2>
 <ul>
 <li>New endpoints
 
@@ -1361,20 +1394,21 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="err">#</span><span class="w"> </span><span class="err">Create</span><span class="w"> </span><span class="err">by</span><span class="w"> </span><span class="err">files</span><span class="w">
 </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123e4567-e89b-12d3-a456-426655440000"</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123e4567-e89b-12d3-a456-426655440000"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span><span class="err">#</span><span class="w"> </span><span class="err">Create</span><span class="w"> </span><span class="err">by</span><span class="w"> </span><span class="err">crawler</span><span class="w">
 </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123e4567-e89b-12d3-a456-426655440000"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span><span class="err">#</span><span class="w"> </span><span class="err">Create</span><span class="w"> </span><span class="err">by</span><span class="w"> </span><span class="err">files</span><span class="w">
+</span><span class="err">#</span><span class="w"> </span><span class="err">Create</span><span class="w"> </span><span class="err">by</span><span class="w"> </span><span class="err">text</span><span class="w">
 </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123e4567-e89b-12d3-a456-426655440000"</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123e4567-e89b-12d3-a456-426655440000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
-
 </span></code></pre></div>
 <p>Create training data for model training. Create training data by crawler or uploading files will be processed in background and the result will be sent to the webhook.</p>
 <h3 id='http-request'>HTTP Request</h3>
@@ -1461,6 +1495,138 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 <td></td>
 </tr>
 </tbody></table>
+<h2 id='get-training-data'>Get Training Data</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/training_data'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'api-key: CHATBOT_API_KEY'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/chatbot/training_data"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">"api-key"</span><span class="p">:</span> <span class="n">CHATBOT_API_KEY</span><span class="p">,</span> <span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"training_data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Plain Text"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123e4567-e89b-12d3-a456-426655440000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"File Name"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123e4567-e89b-12d3-a456-426655440000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"file"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Website URL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123e4567-e89b-12d3-a456-426655440000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"crawler"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>List all training data which will be used in next training.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://caigunn-api.ap-mic.com/api/external/chatbot/training_data</code></p>
+<h3 id='header-parameters-2'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>api-key</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>API Key.</td>
+</tr>
+<tr>
+<td>caigunn-access-token</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>Caigunn Access Token.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-training-data'>Delete Training Data</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> DELETE <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/training_data/{TRAINING_DATA_ID}'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'api-key: CHATBOT_API_KEY'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/chatbot/training_data/{TRAINING_DATA_ID}"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">"api-key"</span><span class="p">:</span> <span class="n">CHATBOT_API_KEY</span><span class="p">,</span> <span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"DELETE"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Delete training data successfully"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Delete training data by id.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>DELETE https://caigunn-api.ap-mic.com/api/external/chatbot/training_data/TRAINING_DATA_ID</code></p>
+<h3 id='header-parameters-3'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>api-key</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>API Key.</td>
+</tr>
+<tr>
+<td>caigunn-access-token</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>Caigunn Access Token.</td>
+</tr>
+</tbody></table>
+<h3 id='path-parameters'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>training_data_id</td>
+<td>uuid</td>
+<td>true</td>
+<td></td>
+<td>The ID of training data.</td>
+</tr>
+</tbody></table>
 <h2 id='train-a-model'>Train a Model</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/model'</span> <span class="se">\</span>
     <span class="nt">--header</span> <span class="s1">'api-key: CHATBOT_API_KEY'</span> <span class="se">\</span>
     <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span> <span class="se">\</span>
@@ -1486,13 +1652,13 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Training in background"</span><span class="w">
+  </span><span class="nl">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123e4567-e89b-12d3-a456-426655440000"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Train a model. Result will be sent to the webhook.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>POST https://caigunn-api.ap-mic.com/api/external/chatbot/model</code></p>
-<h3 id='header-parameters-2'>Header Parameters</h3>
+<h3 id='header-parameters-4'>Header Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1572,9 +1738,9 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves all models.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET http://caigunn-api.ap-mic.com/api/external/chatbot/model</code></p>
-<h3 id='header-parameters-3'>Header Parameters</h3>
+<h3 id='header-parameters-5'>Header Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1633,9 +1799,9 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves detail information of the chatbot.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET https://caigunn-api.ap-mic.com/api/external/chatbot/model/MODEL_ID</code></p>
-<h3 id='path-parameters'>Path Parameters</h3>
+<h3 id='path-parameters-2'>Path Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -1653,7 +1819,7 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 <td>ID of the model.</td>
 </tr>
 </tbody></table>
-<h3 id='header-parameters-4'>Header Parameters</h3>
+<h3 id='header-parameters-6'>Header Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2069,18 +2235,162 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 <td>Webhook url for chatbot event subscripiton.</td>
 </tr>
 </tbody></table>
+<h2 id='unsubscribe-webhook'>Unsubscribe Webhook</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> DELETE <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/webhook'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'api-key: CHATBOT_API_KEY'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/chatbot/webhook"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"api-key"</span><span class="p">:</span> <span class="n">CHATBOT_API_KEY</span><span class="p">,</span>
+    <span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"DELETE"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unsubscribe webhook successfully"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Unsubscribe webhook.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>DELETE https://caigunn-api.ap-mic.com/api/external/chatbot/webhook</code></p>
+<h3 id='header-parameters-2'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>api-key</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>API Key.</td>
+</tr>
+<tr>
+<td>caigunn-access-token</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>Caigunn Access Token.</td>
+</tr>
+</tbody></table>
+<h2 id='get-events-by-event-id'>Get Events by Event ID</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/event/{EVENT_ID}'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'api-key: CHATBOT_API_KEY'</span> <span class="se">\</span>
+    <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/chatbot/event/{EVENT_ID}"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">"api-key"</span><span class="p">:</span> <span class="n">CHATBOT_API_KEY</span><span class="p">,</span> <span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"GET"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"webhook_logs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-07-30T07:48:56.065248Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"crawling"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"initial"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"chatbot_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"broadcast_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-07-30T07:50:03.500039Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"crawling"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"chatbot_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"training_data_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"broadcast_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>List all training data which will be used in next training.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://caigunn-api.ap-mic.com/api/external/chatbot/event/{EVENT_ID}</code></p>
+<h3 id='header-parameters-3'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>api-key</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>API Key.</td>
+</tr>
+<tr>
+<td>caigunn-access-token</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>Caigunn Access Token.</td>
+</tr>
+</tbody></table>
+<h3 id='path-parameters'>Path Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>event_id</td>
+<td>uuid</td>
+<td>true</td>
+<td></td>
+<td>Event ID.</td>
+</tr>
+</tbody></table>
 <h1 id='webhook-events'>Webhook Events</h1><h2 id='crawling-initial'>crawling.initial</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"crawling"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"initial"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"chatbot_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="w">
+  </span><span class="nl">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"chatbot_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='crawling-completed'>crawling.completed</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"crawling"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"chatbot_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"chatbot_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"training_data_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
@@ -2091,15 +2401,17 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 </span></code></pre></div><h2 id='uploading-initial'>uploading.initial</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploading"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"initial"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"chatbot_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="w">
+  </span><span class="nl">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"chatbot_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='uploading-completed'>uploading.completed</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploading"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"chatbot_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"chatbot_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"training_data_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
@@ -2117,19 +2429,25 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 </span></code></pre></div><h2 id='uploading-failed'>uploading.failed</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploading"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"chatbot_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="w">
+  </span><span class="nl">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"chatbot_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='training-initial'>training.initial</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"training"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"initial"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"chatbot_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="w">
+  </span><span class="nl">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"chatbot_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='training-completed'>training.completed</h2><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"training"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"chatbot_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"chatbot_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"model_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"training_data_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
@@ -2154,8 +2472,11 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"event"</span><span class="p">:</span><span class="w"> </span><span class="s2">"training"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"chatbot_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+  </span><span class="nl">"event_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"chatbot_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3fa85f64-5717-4562-b3fc-2c963f66afa6"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h1 id='errors'>Errors</h1>
 <p>The CaiGunn API uses the following error codes:</p>
