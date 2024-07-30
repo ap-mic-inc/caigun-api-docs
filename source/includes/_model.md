@@ -73,20 +73,21 @@ print(response.json())
 ```json
 # Create by files
 {
-    "id": "123e4567-e89b-12d3-a456-426655440000"
+    "id": null,
+    "event_id": "123e4567-e89b-12d3-a456-426655440000"
 }
 
 # Create by crawler
 {
+    "id": null,
     "event_id": "123e4567-e89b-12d3-a456-426655440000"
 }
 
-# Create by files
+# Create by text
 {
-    "event_id": "123e4567-e89b-12d3-a456-426655440000"
+    "id": "123e4567-e89b-12d3-a456-426655440000",
+    "event_id": null
 }
-
-
 ```
 
 Create training data for model training. Create training data by crawler or uploading files will be processed in background and the result will be sent to the webhook.
@@ -116,6 +117,112 @@ Create training data for model training. Create training data by crawler or uplo
 | is_single_page | bool   | false     |         | Crawl one webpage or the whole website |
 | text           | string | false     |         |                                        |
 | files          | array  | false     |         |                                        |
+
+## Get Training Data
+
+```shell
+curl --location 'https://caigunn-api.ap-mic.com/api/external/chatbot/training_data' \
+    --header 'api-key: CHATBOT_API_KEY' \
+    --header 'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'
+
+```
+
+```python
+import requests
+
+url = "https://caigunn-api.ap-mic.com/api/external/chatbot/training_data"
+
+headers = {"api-key": CHATBOT_API_KEY, "caigunn-access-token": CAIGUNN_ACCESS_TOKEN}
+
+response = requests.request("GET", url, headers=headers)
+
+print(response.json())
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "training_data": [
+    {
+      "title": "Plain Text",
+      "id": "123e4567-e89b-12d3-a456-426655440000",
+      "type": "text"
+    },
+    {
+      "title": "File Name",
+      "id": "123e4567-e89b-12d3-a456-426655440000",
+      "type": "file"
+    },
+    {
+      "title": "Website URL",
+      "id": "123e4567-e89b-12d3-a456-426655440000",
+      "type": "crawler"
+    }
+  ]
+}
+```
+
+List all training data which will be used in next training.
+
+### HTTP Request
+
+`GET https://caigunn-api.ap-mic.com/api/external/chatbot/training_data`
+
+### Header Parameters
+
+| Name                 | Type   | Mandatory | Default | Description           |
+| -------------------- | ------ | --------- | ------- | --------------------- |
+| api-key              | string | true      |         | API Key.              |
+| caigunn-access-token | string | true      |         | Caigunn Access Token. |
+
+## Delete Training Data
+
+```shell
+curl --location --request DELETE 'https://caigunn-api.ap-mic.com/api/external/chatbot/training_data/{TRAINING_DATA_ID}' \
+    --header 'api-key: CHATBOT_API_KEY' \
+    --header 'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'
+
+```
+
+```python
+import requests
+
+url = "https://caigunn-api.ap-mic.com/api/external/chatbot/training_data/{TRAINING_DATA_ID}"
+
+headers = {"api-key": CHATBOT_API_KEY, "caigunn-access-token": CAIGUNN_ACCESS_TOKEN}
+
+response = requests.request("DELETE", url, headers=headers)
+
+print(response.json())
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "detail": "Delete training data successfully"
+}
+```
+
+Delete training data by id.
+
+### HTTP Request
+
+`DELETE https://caigunn-api.ap-mic.com/api/external/chatbot/training_data/TRAINING_DATA_ID`
+
+### Header Parameters
+
+| Name                 | Type   | Mandatory | Default | Description           |
+| -------------------- | ------ | --------- | ------- | --------------------- |
+| api-key              | string | true      |         | API Key.              |
+| caigunn-access-token | string | true      |         | Caigunn Access Token. |
+
+### Path Parameters
+
+| Name             | Type | Mandatory | Default | Description              |
+| ---------------- | ---- | --------- | ------- | ------------------------ |
+| training_data_id | uuid | true      |         | The ID of training data. |
 
 ## Train a Model
 
@@ -149,7 +256,7 @@ print(response.json())
 
 ```json
 {
-  "detail": "Training in background"
+  "event_id": "123e4567-e89b-12d3-a456-426655440000"
 }
 ```
 

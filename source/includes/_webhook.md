@@ -56,6 +56,122 @@ Set webhook url to subscribe chatbot events.
 | ----------- | ------ | --------- | ------- | ------------------------------------------- |
 | webhook_url | string | true      |         | Webhook url for chatbot event subscripiton. |
 
+## Unsubscribe Webhook
+
+```shell
+curl --location --request DELETE 'https://caigunn-api.ap-mic.com/api/external/chatbot/webhook' \
+    --header 'api-key: CHATBOT_API_KEY' \
+    --header 'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'
+```
+
+```python
+import requests
+import json
+
+url = "https://caigunn-api.ap-mic.com/api/external/chatbot/webhook"
+
+headers = {
+    "api-key": CHATBOT_API_KEY,
+    "caigunn-access-token": CAIGUNN_ACCESS_TOKEN
+}
+
+response = requests.request("DELETE", url, headers=headers)
+
+print(response.json())
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "detail": "Unsubscribe webhook successfully"
+}
+```
+
+Unsubscribe webhook.
+
+### HTTP Request
+
+`DELETE https://caigunn-api.ap-mic.com/api/external/chatbot/webhook`
+
+### Header Parameters
+
+| Name                 | Type   | Mandatory | Default | Description           |
+| -------------------- | ------ | --------- | ------- | --------------------- |
+| api-key              | string | true      |         | API Key.              |
+| caigunn-access-token | string | true      |         | Caigunn Access Token. |
+
+## Get Events by Event ID
+
+```shell
+curl --location 'https://caigunn-api.ap-mic.com/api/external/chatbot/event/{EVENT_ID}' \
+    --header 'api-key: CHATBOT_API_KEY' \
+    --header 'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'
+
+```
+
+```python
+import requests
+
+url = "https://caigunn-api.ap-mic.com/api/external/chatbot/event/{EVENT_ID}"
+
+headers = {"api-key": CHATBOT_API_KEY, "caigunn-access-token": CAIGUNN_ACCESS_TOKEN}
+
+response = requests.request("GET", url, headers=headers)
+
+print(response.json())
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "webhook_logs": [
+    {
+      "created_at": "2024-07-30T07:48:56.065248Z",
+      "event_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "event": "crawling",
+      "status": "initial",
+      "data": {
+        "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+      },
+      "broadcast_status": "completed"
+    },
+    {
+      "created_at": "2024-07-30T07:50:03.500039Z",
+      "event_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "event": "crawling",
+      "status": "completed",
+      "data": {
+        "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "training_data_ids": ["3fa85f64-5717-4562-b3fc-2c963f66afa6"]
+      },
+      "broadcast_status": "completed"
+    }
+  ]
+}
+```
+
+List all training data which will be used in next training.
+
+### HTTP Request
+
+`GET https://caigunn-api.ap-mic.com/api/external/chatbot/event/{EVENT_ID}`
+
+### Header Parameters
+
+| Name                 | Type   | Mandatory | Default | Description           |
+| -------------------- | ------ | --------- | ------- | --------------------- |
+| api-key              | string | true      |         | API Key.              |
+| caigunn-access-token | string | true      |         | Caigunn Access Token. |
+
+### Path Parameters
+
+| Name     | Type | Mandatory | Default | Description |
+| -------- | ---- | --------- | ------- | ----------- |
+| event_id | uuid | true      |         | Event ID.   |
+
 # Webhook Events
 
 ## crawling.initial
@@ -64,8 +180,10 @@ Set webhook url to subscribe chatbot events.
 {
   "event": "crawling",
   "status": "initial",
-  "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-  "event_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+  "event_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "data": {
+    "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+  }
 }
 ```
 
@@ -75,9 +193,9 @@ Set webhook url to subscribe chatbot events.
 {
   "event": "crawling",
   "status": "completed",
-  "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "event_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "data": {
+    "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
     "training_data_ids": [
       "3fa85f64-5717-4562-b3fc-2c963f66afa6",
       "3fa85f64-5717-4562-b3fc-2c963f66afa6",
@@ -93,8 +211,10 @@ Set webhook url to subscribe chatbot events.
 {
   "event": "uploading",
   "status": "initial",
-  "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-  "event_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+  "event_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "data": {
+    "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+  }
 }
 ```
 
@@ -104,9 +224,9 @@ Set webhook url to subscribe chatbot events.
 {
   "event": "uploading",
   "status": "completed",
-  "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "event_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "data": {
+    "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
     "training_data_ids": [
       {
         "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
@@ -129,8 +249,10 @@ Set webhook url to subscribe chatbot events.
 {
   "event": "uploading",
   "status": "failed",
-  "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-  "event_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+  "event_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "data": {
+    "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+  }
 }
 ```
 
@@ -140,7 +262,10 @@ Set webhook url to subscribe chatbot events.
 {
   "event": "training",
   "status": "initial",
-  "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+  "event_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "data": {
+    "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+  }
 }
 ```
 
@@ -150,8 +275,9 @@ Set webhook url to subscribe chatbot events.
 {
   "event": "training",
   "status": "completed",
-  "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "event_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "data": {
+    "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
     "model_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
     "training_data_ids": [
       "3fa85f64-5717-4562-b3fc-2c963f66afa6",
@@ -173,7 +299,10 @@ Set webhook url to subscribe chatbot events.
 {
   "event": "training",
   "status": "failed",
-  "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-  "detail": ""
+  "event_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "data": {
+    "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "detail": ""
+  }
 }
 ```
