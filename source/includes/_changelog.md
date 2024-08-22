@@ -1,16 +1,23 @@
 # Change Log
 
-## 2024-07-30
-- New endpoints
- - DELETE /api/external/chatbot/webhook
- - DELETE /api/external/chatbot/training_data/{training_data_id}
- - GET /api/external/chatbot/training_data
- - GET /api/external/chatbot/event/{event_id}
-- Update endpoints
- - POST /api/external/chatbot/training_data: response `id` and `event_id`
- - POST /api/external/chatbot/model: response `event_id`
-- Update webhook messages
+## 2024-08-22
 
+- Update endpoints
+  - POST /api/external/user/chatbot: Setup the chatbot with FormData on create
+- Fix
+  - PUT /api/external/user/chatbot/{chatbot_id}: Fix the url for HTTP Request
+
+## 2024-07-30
+
+- New endpoints
+  - DELETE /api/external/chatbot/webhook
+  - DELETE /api/external/chatbot/training_data/{training_data_id}
+  - GET /api/external/chatbot/training_data
+  - GET /api/external/chatbot/event/{event_id}
+- Update endpoints
+  - POST /api/external/chatbot/training_data: response `id` and `event_id`
+  - POST /api/external/chatbot/model: response `event_id`
+- Update webhook messages
 
 ## 2024-07-05
 

@@ -106,9 +106,10 @@ This endpoint retrieves all plans.
 ## Create Chatbot
 
 ```shell
-curl --location 'https://caigunn-api.ap-mic.com/api/external/user/chatbot?title=TITLE&plan_id=PLAN_ID' \
+curl --location 'https://caigunn-api.ap-mic.com/api/external/user/chatbot' \
     --header 'caigunn-access-token: CAIGUNN_ACCESS_TOKEN' \
-    --header 'Content-Type: application/json'
+    --form 'title=TITLE' \
+    --form 'plan_id=PLAN_ID'
 ```
 
 ```python
@@ -118,11 +119,15 @@ import json
 url = "https://caigunn-api.ap-mic.com/api/external/user/chatbot?title=TITLE&plan_id=PLAN_ID"
 
 headers = {
-    "caigunn-access-token": CAIGUNN_ACCESS_TOKEN,
-    "Content-Type": "application/json",
+    "caigunn-access-token": CAIGUNN_ACCESS_TOKEN
 }
 
-response = requests.request("POST", url, headers=headers)
+payload = {
+    "title": TITLE,
+    "plan_id": PLAN_ID,
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
 print(response.json())
 
 ```
@@ -132,6 +137,7 @@ print(response.json())
 ```json
 {
   "chatbot_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+  "webchat_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
   "api_key": "string",
   "expired_at": "2024-07-05T09:49:32.451Z"
 }
@@ -149,12 +155,24 @@ Create Chatbot.
 | -------------------- | ------ | --------- | ------- | --------------------- |
 | caigunn-access-token | string | true      |         | Caigunn Access Token. |
 
-### Query Parameters
+### Request Body FormData
 
-| Name    | Type   | Mandatory | Default | Description |
-| ------- | ------ | --------- | ------- | ----------- |
-| title   | string | true      |         |             |
-| plan_id | uuid   | true      |         |             |
+| Name               | Type    | Mandatory | Default | Description                                        |
+| ------------------ | ------- | --------- | ------- | -------------------------------------------------- |
+| title              | string  | true      |         |                                                    |
+| plan_id            | uuid    | true      |         |                                                    |
+| avatar             | file    | false     |         |                                                    |
+| main_color         | string  | false     |         |                                                    |
+| is_default_visible | boolean | false     |         |                                                    |
+| button_style       | string  | false     |         | basic, image                                       |
+| button_image       | file    | false     |         |                                                    |
+| initial_messages   | array   | false     |         | [{"type":"text","value":"string"}]                 |
+| is_fixed           | bool    | false     |         |                                                    |
+| show_history       | boolean | false     |         |                                                    |
+| allowed_domains    | array   | false     |         | ["http://localhost", "https://caigunn.ap-mic.com"] |
+| model_id           | uuid    | false     |         |                                                    |
+| prompt             | string  | false     |         |                                                    |
+| is_shared          | boolean | false     |         |                                                    |
 
 ## Get All Chatbots
 
@@ -312,8 +330,7 @@ This endpoint retrieves detail information of the chatbot.
 ```shell
 curl --location --request PUT 'https://caigunn-api.ap-mic.com/api/external/user/chatbot/CHATBOT_ID' \
     --header 'caigunn-access-token: CAIGUNN_ACCESS_TOKEN' \
-    --header 'Content-Type: application/json' \
-    --data '{"webhook_url": WEBHOOK_URL}'
+    --form 'title=TITLE'
 ```
 
 ```python
@@ -322,10 +339,9 @@ import json
 
 url = "https://caigunn-api.ap-mic.com/api/external/user/chatbot/CHATBOT_ID"
 
-payload = json.dumps({"webhook_url": WEBHOOK_URL})
+payload = json.dumps({"title": TITLE})
 headers = {
-    "caigunn-access-token": CAIGUNN_ACCESS_TOKEN,
-    "Content-Type": "application/json",
+    "caigunn-access-token": CAIGUNN_ACCESS_TOKEN
 }
 
 response = requests.request("PUT", url, headers=headers, data=payload)
@@ -346,32 +362,31 @@ Update chatbot settings
 
 ### HTTP Request
 
-`PUT https://caigunn-api.ap-mic.com/api/external/chatbot/webhook`
+`PUT https://caigunn-api.ap-mic.com/api/external/user/chatbot/CHATBOT_ID`
 
 ### Header Parameters
 
 | Name                 | Type   | Mandatory | Default | Description           |
 | -------------------- | ------ | --------- | ------- | --------------------- |
-| api-key              | string | true      |         | API Key.              |
 | caigunn-access-token | string | true      |         | Caigunn Access Token. |
 
-### Request Body Form data
+### Request Body FormData
 
-| Name               | Type    | Mandatory | Default | Description                        |
-| ------------------ | ------- | --------- | ------- | ---------------------------------- |
-| title              | string  | false     |         |                                    |
-| avatar             | file    | false     |         |                                    |
-| main_color         | string  | false     |         |                                    |
-| is_default_visible | boolean | false     |         |                                    |
-| button_style       | string  | false     |         | basic, image                       |
-| button_image       | file    | false     |         |                                    |
-| initial_messages   | array   | false     |         | [{"type":"text","value":"string"}] |
-| is_fixed           | bool    | false     |         |                                    |
-| show_history       | boolean | false     |         |                                    |
-| allowed_domains    | array   | false     |         |                                    |
-| model_id           | uuid    | false     |         |                                    |
-| prompt             | string  | false     |         |                                    |
-| is_shared          | boolean | false     |         |                                    |
+| Name               | Type    | Mandatory | Default | Description                                        |
+| ------------------ | ------- | --------- | ------- | -------------------------------------------------- |
+| title              | string  | false     |         |                                                    |
+| avatar             | file    | false     |         |                                                    |
+| main_color         | string  | false     |         |                                                    |
+| is_default_visible | boolean | false     |         |                                                    |
+| button_style       | string  | false     |         | basic, image                                       |
+| button_image       | file    | false     |         |                                                    |
+| initial_messages   | array   | false     |         | [{"type":"text","value":"string"}]                 |
+| is_fixed           | bool    | false     |         |                                                    |
+| show_history       | boolean | false     |         |                                                    |
+| allowed_domains    | array   | false     |         | ["http://localhost", "https://caigunn.ap-mic.com"] |
+| model_id           | uuid    | false     |         |                                                    |
+| prompt             | string  | false     |         |                                                    |
+| is_shared          | boolean | false     |         |                                                    |
 
 ## Delete Chatbot
 
