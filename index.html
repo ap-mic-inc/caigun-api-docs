@@ -317,6 +317,9 @@
             <a href="#change-log" class="toc-h1 toc-link" data-title="Change Log">Change Log</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#2024-11-19" class="toc-h2 toc-link" data-title="2024-11-19">2024-11-19</a>
+                  </li>
+                  <li>
                     <a href="#2024-08-22" class="toc-h2 toc-link" data-title="2024-08-22">2024-08-22</a>
                   </li>
                   <li>
@@ -412,6 +415,9 @@
                     <a href="#talk-with-chatbot" class="toc-h2 toc-link" data-title="Talk With Chatbot">Talk With Chatbot</a>
                   </li>
                   <li>
+                    <a href="#talk-with-chatbot-by-image" class="toc-h2 toc-link" data-title="Talk With Chatbot by image">Talk With Chatbot by image</a>
+                  </li>
+                  <li>
                     <a href="#get-conversation-uids" class="toc-h2 toc-link" data-title="Get Conversation UIDs">Get Conversation UIDs</a>
                   </li>
                   <li>
@@ -474,7 +480,15 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='change-log'>Change Log</h1><h2 id='2024-08-22'>2024-08-22</h2>
+        <h1 id='change-log'>Change Log</h1><h2 id='2024-11-19'>2024-11-19</h2>
+<ul>
+<li>New endpoints
+
+<ul>
+<li>POST /api/external/chatbot/vision: Conversation with chatbot by image</li>
+</ul></li>
+</ul>
+<h2 id='2024-08-22'>2024-08-22</h2>
 <ul>
 <li>Update endpoints
 
@@ -2042,6 +2056,112 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 <td>Message from the conversation participant.</td>
 </tr>
 </tbody></table>
+<h2 id='talk-with-chatbot-by-image'>Talk With Chatbot by image</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/vision?nickname=NICKNAME'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'api-key: CHATBOT_API_KEY'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span> <span class="se">\</span>
+  <span class="nt">--header</span> <span class="s1">'uid: CUSTUM_UID'</span> <span class="se">\</span>
+  <span class="nt">--form</span> <span class="s1">'text=""'</span> <span class="se">\</span>
+  <span class="nt">--form</span> <span class="s1">'image=@"/path/to/file"'</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://caigunn-api.ap-mic.com/api/external/chatbot/vision?nickname=NICKNAME"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s">"text"</span><span class="p">:</span> <span class="s">""</span><span class="p">}</span>
+<span class="n">files</span> <span class="o">=</span> <span class="p">[(</span><span class="s">"image"</span><span class="p">,</span> <span class="p">(</span><span class="s">"file"</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s">"/path/to/file"</span><span class="p">,</span> <span class="s">"rb"</span><span class="p">),</span> <span class="s">"application/octet-stream"</span><span class="p">))]</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"api-key"</span><span class="p">:</span> <span class="n">CHATBOT_API_KEY</span><span class="p">,</span>
+    <span class="s">"caigunn-access-token"</span><span class="p">:</span> <span class="n">CAIGUNN_ACCESS_TOKEN</span><span class="p">,</span>
+    <span class="s">"uid"</span><span class="p">:</span> <span class="n">CUSTUM_UID</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">files</span><span class="o">=</span><span class="n">files</span><span class="p">)</span>
+
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Send image to chatbot and get response.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://caigunn-api.ap-mic.com/api/external/chatbot/vision</code></p>
+<h3 id='header-parameters-2'>Header Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>api-key</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>API Key.</td>
+</tr>
+<tr>
+<td>caigunn-access-token</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>Caigunn Access Token.</td>
+</tr>
+<tr>
+<td>uid</td>
+<td>string</td>
+<td>true</td>
+<td></td>
+<td>Custom UID for identify conversation.</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>nickname</td>
+<td>string</td>
+<td>false</td>
+<td></td>
+<td>Nickname of the conversation participant.</td>
+</tr>
+</tbody></table>
+<h3 id='request-body-form-data'>Request Body Form data</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Mandatory</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>text</td>
+<td>string</td>
+<td>false</td>
+<td></td>
+<td>Message from the conversation participant.</td>
+</tr>
+<tr>
+<td>image</td>
+<td>file</td>
+<td>true</td>
+<td></td>
+<td>.png, .jpg, .jpeg, .gif, .tiff, .tif</td>
+</tr>
+</tbody></table>
 <h2 id='get-conversation-uids'>Get Conversation UIDs</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap-mic.com/api/external/chatbot/uids?offset=OFFSET&amp;limit=LIMIT&amp;start_at=START_AT&amp;end_at=END_AT'</span> <span class="se">\</span>
     <span class="nt">--header</span> <span class="s1">'api-key: CHATBOT_API_KEY'</span>
     <span class="nt">--header</span> <span class="s1">'caigunn-access-token: CAIGUNN_ACCESS_TOKEN'</span>
@@ -2075,9 +2195,9 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves conversation UIDs.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://caigunn-api.ap-mic.com/api/external/chatbot/uids</code></p>
-<h3 id='header-parameters-2'>Header Parameters</h3>
+<h3 id='header-parameters-3'>Header Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2102,7 +2222,7 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 <td>Caigunn Access Token.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-2'>Query Parameters</h3>
+<h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2177,9 +2297,9 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves historical messages from a conversation.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET https://caigunn-api.ap-mic.com/api/external/chatbot/messages</code></p>
-<h3 id='header-parameters-3'>Header Parameters</h3>
+<h3 id='header-parameters-4'>Header Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2211,7 +2331,7 @@ curl <span class="nt">--location</span> <span class="s1">'https://caigunn-api.ap
 <td>Custom UID for identify conversation.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-3'>Query Parameters</h3>
+<h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Name</th>
