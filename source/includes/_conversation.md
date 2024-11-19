@@ -64,6 +64,69 @@ Send message to chatbot and get response.
 | ---- | ------ | --------- | ------- | ------------------------------------------ |
 | text | string | true      |         | Message from the conversation participant. |
 
+## Talk With Chatbot by image
+
+```shell
+curl --location 'https://caigunn-api.ap-mic.com/api/external/chatbot/vision?nickname=NICKNAME' \
+  --header 'api-key: CHATBOT_API_KEY' \
+  --header 'caigunn-access-token: CAIGUNN_ACCESS_TOKEN' \
+  --header 'uid: CUSTUM_UID' \
+  --form 'text=""' \
+  --form 'image=@"/path/to/file"'
+```
+
+```python
+import requests
+
+url = "https://caigunn-api.ap-mic.com/api/external/chatbot/vision?nickname=NICKNAME"
+
+payload = {"text": ""}
+files = [("image", ("file", open("/path/to/file", "rb"), "application/octet-stream"))]
+headers = {
+    "api-key": CHATBOT_API_KEY,
+    "caigunn-access-token": CAIGUNN_ACCESS_TOKEN,
+    "uid": CUSTUM_UID,
+}
+
+response = requests.request("POST", url, headers=headers, data=payload, files=files)
+
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "text": "string"
+}
+```
+
+Send image to chatbot and get response.
+
+### HTTP Request
+
+`POST https://caigunn-api.ap-mic.com/api/external/chatbot/vision`
+
+### Header Parameters
+
+| Name                 | Type   | Mandatory | Default | Description                           |
+| -------------------- | ------ | --------- | ------- | ------------------------------------- |
+| api-key              | string | true      |         | API Key.                              |
+| caigunn-access-token | string | true      |         | Caigunn Access Token.                 |
+| uid                  | string | true      |         | Custom UID for identify conversation. |
+
+### Query Parameters
+
+| Name     | Type   | Mandatory | Default | Description                               |
+| -------- | ------ | --------- | ------- | ----------------------------------------- |
+| nickname | string | false     |         | Nickname of the conversation participant. |
+
+### Request Body Form data
+
+| Name  | Type   | Mandatory | Default | Description                                |
+| ----- | ------ | --------- | ------- | ------------------------------------------ |
+| text  | string | false     |         | Message from the conversation participant. |
+| image | file   | true      |         | .png, .jpg, .jpeg, .gif, .tiff, .tif       |
+
 ## Get Conversation UIDs
 
 ```shell
