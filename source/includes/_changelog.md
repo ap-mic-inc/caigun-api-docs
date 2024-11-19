@@ -1,5 +1,10 @@
 # Change Log
 
+## 2024-11-19
+
+- New endpoints
+  - POST /api/external/chatbot/vision: Conversation with chatbot by image
+
 ## 2024-08-22
 
 - Update endpoints
